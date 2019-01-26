@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="" class="loading">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hexo</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any pr,"> 
+    <meta name="author" content="John Doe"> 
+    <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+</head>
+</html>
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">article title</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div class="main">
+        <h1 class="title">article title</h1>
+        <div class="stuff">
+            <span>十月 12, 2018</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <p>  <strong><font color="red">&ensp;&ensp;this的指向在一开始函数的创建时是决定不了的，在调用的时候才能决定，谁调用它，它就指向谁。</font></strong>（不过这种说法也不算很准确，因为可能会存在下面例三的情况）<br>  下面我们举例说明：<br>  <strong>例一</strong><br> <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">o</span><span class="params">()</span></span>&#123;t<span class="string">"梦想”;</span></span><br><span class="line"><span class="string">          console.log(this.user); //undefined</span></span><br><span class="line"><span class="string">          console.log(this); //Window</span></span><br><span class="line"><span class="string">           &#125;</span></span><br><span class="line"><span class="string">         o();</span></span><br></pre></td></tr></table></figure></p>
+<p>   &ensp;&ensp;例一中函数o是被Window对象所调用的，如上面我们说的this指向最终调用它的对象，所以这里的this指向Window。<br>   <strong>例二</strong><br> <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o=&#123;</span><br><span class="line">    <span class="keyword">use</span>:"梦想";</span><br><span class="line">    fn:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">          console.log(this.<span class="keyword">use</span>); <span class="comment">//梦想</span></span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> o.fn();</span><br></pre></td></tr></table></figure></p>
+<p> &ensp;&ensp;例二中的调用fn是通过o.fn()执行的，则this的指向就是对象o。<br> <strong>例三</strong><br> <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o=&#123;</span><br><span class="line">     <span class="keyword">use</span>:"梦想";</span><br><span class="line">     fn:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">           console.log(this.<span class="keyword">use</span>); <span class="comment">//梦想</span></span><br><span class="line">     &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  window.o.fn();</span><br></pre></td></tr></table></figure></p>
+<p> &ensp;&ensp;上面我们说this应指向调用它的对象，例三这里this为什么没有指向window呢？ 接下来我们就用关于this的三种情况来解释例三。</p>
+<p><font color="red">情况一：如果一个函数中有this，但它没有被它的上一级调用，则this就指向window。</font></p>
+<p><font color="red">情况二：如果一个函数中有this，但它被它的上一级调用了，则this就指向它的上一级。</font><br><strong>例四</strong><br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o=&#123;</span><br><span class="line">       a:<span class="number">1</span>;</span><br><span class="line">       p:&#123;</span><br><span class="line">          a:<span class="number">2</span>;</span><br><span class="line">          fn:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">                   console.log(this.a); \\ <span class="number">2</span></span><br><span class="line">                   &#125;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    o.p.fn()</span><br></pre></td></tr></table></figure></p>
+<p> <strong>例五</strong><br> <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o=&#123;</span><br><span class="line">       a:<span class="number">1</span>;</span><br><span class="line">       p:&#123;</span><br><span class="line">          a:<span class="number">2</span>;</span><br><span class="line">          fn:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">                   console.log(this.a); \\ undefined</span><br><span class="line">                   console.log(this); \\window</span><br><span class="line">                   &#125;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   s=o.p.fn;</span><br><span class="line">   s();</span><br></pre></td></tr></table></figure></p>
+<p> &ensp;&ensp;例四符合情况二，函数被它的上一级调用，所以this指向它的上一级p,而例五同样是函数被它的上一级调用了，为什么this没有指向它的上一级，而是指向了window呢？其实这里有一种特殊情况。<br> <font color="red">特殊情况：大家看一看例四和例五有什么不同呢，例四是调用了函数，函数直接执行了。而例五只是把函数赋给变量S，并没有执行函数，而应该是在s()语句时，函数才被调用执行。window是JS中的全局对象，我们创建变量实质上是给window增加属性，所以this最终指向window</font>。</p>
+<p><font color="red">情况三：如果一个函数中有this，这个函数中包含了多个对象，尽管这个函数被最外层的对象所调用，this指向的也是它的上一级。</font><br><strong>构造函数版this</strong> </p>
+<p><font color="red">&ensp;&ensp;new关键字做了什么：</font></p>
+<ul>
+<li>创建一个新的对象，这个对象的类型是object；</li>
+<li><p>改变this的指向；<br><strong>例六</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">o</span></span>&#123;</span><br><span class="line">         this.<span class="keyword">use</span>=<span class="string">"梦想"</span>;</span><br><span class="line">         &#125;</span><br><span class="line">    <span class="keyword">var</span> a=<span class="keyword">new</span> o();</span><br><span class="line">    console.log(a.<span class="keyword">use</span>); \\梦想</span><br></pre></td></tr></table></figure>
+<p>&ensp;&ensp;例六这里为什么可以用a可以点出o函数里面的use，是因为new可以改变this的指向，使this指向a对象。a=new o()这条语句就是将o复制了一份到a里面，这时并没有执行函数，a.use语句才执行了函数，所以this指向a。<br><strong>函数中既含有this又含有return</strong><br><font color="red">如果返回值是一个对象则this指向那个返回的对象，如果返回值不是一个对象，则this指向new新建的对象。特殊的若返回值是null(是对象)，this还是指向新建的对象。</font><br><strong>例七</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">o</span></span>&#123;</span><br><span class="line">        this.<span class="keyword">use</span>=<span class="string">"梦想"</span>;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">   <span class="keyword">var</span> a=<span class="keyword">new</span> o();</span><br><span class="line">   console.log(a.<span class="keyword">use</span>); \\undefined</span><br></pre></td></tr></table></figure>
+<p><strong>例八</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">o</span></span>&#123;</span><br><span class="line">        this.<span class="keyword">use</span>=<span class="string">"梦想"</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">   <span class="keyword">var</span> a=<span class="keyword">new</span> o();</span><br><span class="line">   console.log(a.<span class="keyword">use</span>); \\梦想</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>例九</strong><br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">o</span></span>&#123;</span><br><span class="line">        this.<span class="keyword">use</span>=<span class="string">"梦想"</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">   <span class="keyword">var</span> a=<span class="keyword">new</span> o();</span><br><span class="line">   console.log(a.<span class="keyword">use</span>); \\梦想</span><br></pre></td></tr></table></figure></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
+                    
+                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link" data-ae="false" data-ci="" data-cs="" data-r="" data-o="" data-a="" data-d="false">查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>
