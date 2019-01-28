@@ -21,102 +21,62 @@
 </html>
 <body class="loading">
     <div id="loader"></div>
-    <div class="nav">
-    <ul id="menu-menu" class="menu">
-        
-        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
-            <a href="/whoami/" title="Whoami" target="_blank" rel="noopener">Whoami</a>
-        </li>
-        
-        <li class="  menu-item menu-item-type-post_type menu-item-object-page">
-            <a href="https://github.com/zxsmile" title="Github" target="_blank" rel="noopener">Github</a>
-        </li>
-        
-        <li class="  menu-item menu-item-type-post_type menu-item-object-page">
-            <a href="https://twitter.com/FechinLi" title="Twitter" target="_blank" rel="noopener">Twitter</a>
-        </li>
-        
-    </ul>
-    <p id="copyright">
-        &copy; 2019 John Doe.
-        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
-        Theme <a href="https://github.com/Fechin/hexo-theme-diaspora" title="Diaspora" target="_blank" rel="noopener">Diaspora</a>
-        by Fechin
-    </p>
-</div>
-
-<div id="container">
-    
-<div id="screen">
-    <div id="mark">
-        <div class="layer" data-depth="0.4">
-            <img src="/images/cover2.jpg" id="cover" crossorigin="anonymous" width="1920" height="1080">
-        </div>
-    </div>
-    <div id="vibrant">
-        <svg viewbox="0 0 2880 1620" height="100%" preserveaspectratio="xMaxYMax slice">
-            <polygon opacity="0.7" points="2000,1620 0,1620 0,0 600,0 "/>
-        </svg>
-        <div></div>
-    </div>
-    <div id="header">
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">从github远程仓库删除文件夹或文件</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
         <div>
-            <a class="image-logo" href="/"></a>
-            <div class="icon-menu switchmenu"></div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
         </div>
     </div>
-    
-    <div id="post0">
-        <p>一月 28, 2019</p>
-        <h2><a href="/2019/01/28/从github远程仓库删除文件夹或文件/" title="从github远程仓库删除文件夹或文件" class="posttitle">从github远程仓库删除文件夹或文件</a></h2>
-        <p class="summary">1 首先进入文件夹下，右击选择Git Bash Here,打开命令窗口。2 输入git pull origin m...</p>
-    </div>
-    
+    <div class="scrollbar"></div>
 </div>
+    <div class="section">
+        <div class="article">
+    <div class="main">
+        <h1 class="title">从github远程仓库删除文件夹或文件</h1>
+        <div class="stuff">
+            <span>一月 28, 2019</span>
+            
 
-    <div id="primary">
+        </div>
+        <div class="content markdown">
+            <p>1 首先进入文件夹下，右击选择Git Bash Here,打开命令窗口。<br><br>2 输入git pull origin master(或分支名),将远程仓库或分支里面的项目拉下来。<br><br>3 输入dir，查看有哪些文件或文件夹。<br><br>4 输入git rm -r –cached 文件或文件夹名，删除文件或文件夹。<br><br>5 输入git commit -m “任意文字”,提交，添加操作说明。<br><br>6 输入git push origin master(或分支名)。<br><br>操作完成。<br><br><em>注:</em>本地项目中的要删除的文件夹不收操作影响,删除的只是远程仓库中的文件夹, 可放心删除。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
+                    
+                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
+                    
+                </ul>
+            
+        </div>
         
-<div class="post">
-    <a href="/2019/01/17/git上传出现/" title="git上传出现">
-        <img src="/img/cover.jpg" class="cover" width="680" height="440">
-    </a>
-    <div class="else">
-        <p>一月 17, 2019</p>
-        <h3><a href="/2019/01/17/git上传出现/" title="git上传出现" class="posttitle">git上传出现</a></h3>
-        <p>git上传出现了“！[rejected] master-&gt;master (non-fastt-forward)”将github上的仓库和本地仓库关联...</p>
-    </div>
-</div>
-
-
-<div class="post">
-    <a href="/2018/10/12/flex布局/" title="flex布局">
-        <img src="/img/cover.jpg" class="cover" width="680" height="440">
-    </a>
-    <div class="else">
-        <p>十月 12, 2018</p>
-        <h3><a href="/2018/10/12/flex布局/" title="flex布局" class="posttitle">flex布局</a></h3>
-        <p>&ensp;&ensp;Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。&ensp;&ensp;任何一个容器都...</p>
-    </div>
-</div>
-
-
-<div class="post">
-    <a href="/2018/10/12/thiss指向/" title="this指向">
-        <img src="/images/cover2.jpg" class="cover" width="680" height="440">
-    </a>
-    <div class="else">
-        <p>十月 12, 2018</p>
-        <h3><a href="/2018/10/12/thiss指向/" title="this指向" class="posttitle">this指向</a></h3>
-        <p> &ensp;&ensp;this的指向在一开始函数的创建时是决定不了的，在调用的时候才能决定，谁调用它，它就指向谁。（不过这种说法也不算很准确，因为可能...</p>
-    </div>
-</div>
+    <div id="gitalk-container" class="comment link" data-ae="false" data-ci="" data-cs="" data-r="" data-o="" data-a="" data-d="false">查看评论</div>
 
 
     </div>
     
 </div>
-<div id="preview"></div>
 
+
+    </div>
+</div>
 </body>
 <script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
