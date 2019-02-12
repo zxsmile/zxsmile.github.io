@@ -26,7 +26,7 @@
     <div class="bar" style="width: 0;"></div>
     <a class="icon-home image-icon" href="javascript:;"></a>
     <div title="播放/暂停" class="icon-play"></div>
-    <h3 class="subtitle">zxsmile</h3>
+    <h3 class="subtitle">parseInt用法理解</h3>
     <div class="social">
         <!--<div class="like-icon">-->
             <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -43,14 +43,16 @@
     <div class="section">
         <div class="article">
     <div class="main">
-        <h1 class="title">zxsmile</h1>
+        <h1 class="title">parseInt用法理解</h1>
         <div class="stuff">
-            <span>一月 28, 2019</span>
+            <span>二月 12, 2019</span>
             
 
         </div>
         <div class="content markdown">
-            
+            <p>&ensp;&ensp;先回忆一下parseInt()的语法，parseInt(string，radix)可以接受两个参数，第一个参数表示你要转化为数字的字符串，<font color="red">第二个参数radix设置第一个字符串是几进制。</font><br><br>&ensp;&ensp;例如：<br><br>&ensp;&ensp;&ensp;console(parseInt(3,8))&ensp;&ensp;//3<br><br>&ensp;&ensp;&ensp;console(parseInt(3,2))&ensp;&ensp;//NaN<br><br>&ensp;&ensp;&ensp;console(parseInt(3,0))&ensp;&ensp;//3<br><br>&ensp;&ensp;解释一下上面的结果：<br><br>&ensp;&ensp;&ensp;&ensp;parseInt里面有两个参数，第二个参数是八进制（0,1,2,3,4,5,6,7），所以认识3，所以返回3。<br><br>&ensp;&ensp;&ensp;&ensp;parseInt里面有两个参数，第二个参数是二进制（0,1），所以不认识3，所以返回NaN。<br><br>&ensp;&ensp;&ensp;&ensp;parseInt里面有两个参数，第二个参数是0，默认十进制（0,1,2,3,4,5,6,7,8,9），所以认识3，所以返回3。<br><br>&ensp;&ensp;下面是几个很奇怪的例子：<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;console(parseInt(1/0,19))&ensp;&ensp;//18<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;console(parseInt(false,16))&ensp;&ensp;//250<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;console(parseInt(parseInt,16))&ensp;&ensp;//15<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;console(parseInt(‘0x10’))&ensp;&ensp;//16<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;console(parseInt(‘10’,2))&ensp;&ensp;//2<br><br>&ensp;&ensp;解释一下上面的结果：<br><br>&ensp;&ensp;&ensp;&ensp;先console.log(1/0)一下，结果为Infinity。parseInt里面有两个参数，第二个参数是十九进制（0,1,2,3,4,5,6,7,9,a,b,c,d,e,f,g,h,i），I十九进制认识，n不认识，直接返回i(i在十进制里面表示18）<br><br>&ensp;&ensp;&ensp;&ensp;parseInt里面有两个参数，第二个参数是十六进制（0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f）,false字符串（parseInt的世界里没有布尔值），f十六进制认识，a十六进制认识，l不认识，则立即返回fa(十六进制fa转换为十进制是250）。<br><br>&ensp;&ensp;&ensp;&ensp;先console.log(parseInt)一下，结果为’function parseInt()’为字符串。parseInt里面有两个参数，第二个参数是十六进制（0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f）,f十六进制认识，u不认识，则立即返回f(十六进制f转换为十进制是15）。<br><br>&ensp;&ensp;&ensp;&ensp;parseInt里面只有一个参数，则默认十进制（0,1,2,3,4,5,6,7,8,9），0x十六进制的写法，十六进制的10转换为十进制为16（0<em>16^0+1</em>16^1=16）。<br><br>&ensp;&ensp;&ensp;&ensp;parseInt里面有两个参数，第二个参数是二进制（0,1），1认识，0认识，返回二进制的10转换为十进制为2。<br></p>
+<p><font color="red">总结一下，理解了parseInt中的第二个参数radix是介于2-36的数，计算机中0-9为十进制，再往上十一进制开始用字母表示那么26个字母就可以再十进制上面加多26个进制，即36进制。</font><br></p>
+
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
                 <source type="audio/mpeg" src="">
