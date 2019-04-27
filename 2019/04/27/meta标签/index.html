@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+<html lang="" class="loading">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hexo</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Fechin,"> 
+    
+    <meta name="author" content="zxSmile"> 
+    <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+</head>
+</html>
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">meta标签</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div class="main">
+        <h1 class="title">meta标签</h1>
+        <div class="stuff">
+            <span>四月 27, 2019</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>&ensp;&ensp;&ensp;&ensp;metadata(元数据),是用于描述数据的数据。它不会显示在页面上，但是机器却可以识别。</p>
+<hr>
+
+<h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><p>&ensp;&ensp;&ensp;&ensp;meta常用于定义页面的说明，关键字，最后修改日期，和其它的元数据。这些元数据将服务于浏览器（如何布局或重载页面），搜索引擎和其它网络服务(对于网页也来说，metadata就是通过一些字段信息来描述一下当前网页，以便浏览器和搜索引擎在访问到此网页的时候，可以通过这些描述信息来知道如何去解析此网页数据)。</p>
+<hr>
+
+<h1 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h1><p>&ensp;&ensp;&ensp;&ensp;meta标签始终位于head元素内。</p>
+<hr>
+
+<h1 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h1><ul>
+<li>name</li>
+<li>http-equiv</li>
+<li>content</li>
+<li>charset</li>
+<li>scheme(不常用)<hr>
+
+</li>
+</ul>
+<p>一 、<strong>charset属性</strong>     </p>
+<p>.&ensp;&ensp;&ensp;&ensp;charset为HTML5中新增的，用来声明字符编码;</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>二、 <strong>content属性</strong></p>
+<p> &ensp;&ensp;&ensp;&ensp;content属性和name、http-equiv属性配合使用，content属性用来提供属性的值。</p>
+<p> 三、<strong>name属性</strong></p>
+<p>&ensp;&ensp;&ensp;&ensp; name属性主要用于描述网页，比如网页的关键词，叙述等。与之对应的属性值为content，content中的内容是对name填入类型的具体描述，便于搜索引擎抓取。</p>
+   <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"参数"</span> content=<span class="string">"具体的描述"</span>&gt;。</span><br></pre></td></tr></table></figure>
+<p>   name属性的参数(红色标记为常用的属性)：<br>   &ensp;&ensp;&ensp;&ensp;<font color="red">1. keywords(关键字)</font></p>
+<p>   &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;说明：用于告诉搜索引擎，你网页的关键字。</p>
+<p>   &ensp;&ensp;&ensp;&ensp;&ensp; 用法：<br> <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"keywords"</span> content=<span class="string">"Lxxyx,博客，文科生，前端"</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p> &ensp;&ensp;&ensp;&ensp;<font color="red">2.description(网站内容的描述)</font></p>
+<p> &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;说明：用于告诉搜索引擎，你网站的主要内容。</p>
+<p>&ensp;&ensp;&ensp;&ensp;&ensp; 用法：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"description"</span> content=<span class="string">"文科生，热爱前端与编程。目前大二，这是我的前端博客"</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp; 3. robots(定义搜索引擎爬虫的索引方式)</p>
+<p>  &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;说明：robots用来告诉爬虫哪些页面需要索引，哪些页面不需要索引。<br>   &ensp;&ensp;&ensp;&ensp;&ensp;content的参数有：</p>
+<ul>
+<li><p>none : 搜索引擎将忽略此网页，等价于noindex，nofollow。</p>
+<ul>
+<li>noindex : 搜索引擎不索引此网页。</li>
+<li>nofollow: 搜索引擎不继续通过此网页的链接索引搜索其它的网页。</li>
+<li>all(默认): 搜索引擎将索引此网页与继续通过此网页的链接索引，等价于index，follow。</li>
+<li>index : 搜索引擎索引此网页。</li>
+<li>follow : 搜索引擎继续通过此网页的链接索引搜索其它的网页。</li>
+</ul>
+<p>&ensp;&ensp;用法：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"robots"</span> content=<span class="string">"none"</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>&ensp;&ensp;&ensp;&ensp; 4.author(作者)</p>
+<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;说明：用于标注网页作者。</p>
+<p>&ensp;&ensp;&ensp;&ensp;&ensp; 用法：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"author"</span> content=<span class="string">"Lxxyx,841380530@qq.com"</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>&ensp;&ensp;&ensp;&ensp; 5. generator(网页制作软件)</p>
+</li>
+</ul>
+<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;说明：用于标明网页是什么软件做的:</p>
+<p>&ensp;&ensp;&ensp;&ensp;&ensp; 用法：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"generator"</span> content=<span class="string">"Sublime Text3"</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p> &ensp;&ensp;&ensp;&ensp;6. copyright(版权)</p>
+<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;说明：用于标注版权信息举例：</p>
+<p>&ensp;&ensp;&ensp;&ensp;&ensp; 用法：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"copyright"</span> content=<span class="string">"Lxxyx"</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p> &ensp;&ensp;&ensp;&ensp;7. revisit-after(搜索引擎爬虫重访时间)</p>
+<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;说明：如果页面不是经常更新，为了减轻搜索引擎爬虫对服务器带来的压力，可以设置一个爬虫的重访时间。如果重访时间过短，爬虫将按它们定义的默认时间来访问。<br>&ensp;&ensp;&ensp;&ensp;&ensp; 用法：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"revisit-after"</span> content=<span class="string">"7 days"</span> &gt;</span><br></pre></td></tr></table></figure></p>
+<p> &ensp;&ensp;&ensp;&ensp;8. renderer(双核浏览器渲染方式)</p>
+<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;说明：renderer是为双核浏览器准备的，用于指定双核浏览器默认以何种方式渲染页面。比如说360浏览器。</p>
+<p>&ensp;&ensp;&ensp;&ensp;&ensp; 用法：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"renderer"</span> content=<span class="string">"webkit"</span>&gt; <span class="comment">//默认webkit内核</span></span><br><span class="line">&lt;meta name=<span class="string">"renderer"</span> content=<span class="string">"ie-comp"</span>&gt; <span class="comment">//默认IE兼容模式</span></span><br><span class="line">&lt;meta name=<span class="string">"renderer"</span> content=<span class="string">"ie-stand"</span>&gt; <span class="comment">//默认IE标准模式</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>移动端的应用</strong><br>&ensp;&ensp;&ensp;&ensp;<font color="red">9.  viewport(移动端的窗口)</font></p>
+<p> &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;介绍：viewport也就是可视区域，就是除去所有工具栏、状态栏、滚动条等等我们看网页的区域</p>
+<p> &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;说明：这个属性常用于设计移动端网页，让网页适配手机窗口，自适应页面离不开这个属性。</p>
+<ul>
+<li>width：控制 viewport 的大小，可以给它指定一个值如：600，或者特殊的值，如device-width为设备的宽度（单位是缩放为100%的CSS的像素）</li>
+<li>initial-scale：页面的初始缩放值</li>
+<li>minimum-scale：允许用户的最小缩放值</li>
+<li>maximum-scale：允许用户的最大缩放值</li>
+<li>user-scalable：是否允许用户进行缩放，no 不允许，yes允许</li>
+</ul>
+<p>&ensp;&ensp; &ensp;&ensp;用法：<br> <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p>  &ensp;&ensp;&ensp;&ensp;10.format-detection</p>
+<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;说明：我们可以通过这个属性禁止自动识别电话和邮箱。</p>
+<p>&ensp;&ensp;&ensp;&ensp;&ensp; 用法：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"format-detection"</span> content=<span class="string">"telephone=no,email=no"</span>/&gt;</span><br></pre></td></tr></table></figure></p>
+<p>  &ensp;&ensp;&ensp;&ensp;11.apple-mobile-web-app-capable（网站开启对web app程序的支持）</p>
+<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;说明：网站开启对web app的支持</p>
+<p>&ensp;&ensp;&ensp;&ensp;&ensp; 用法：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"app-mobile-web-app-capable"</span> content=<span class="string">"yes"</span>/&gt;</span><br></pre></td></tr></table></figure></p>
+<p>  &ensp;&ensp;&ensp;&ensp;12.apple-mobile-web-app-status-bar-style（改变顶部状态条的颜色）</p>
+<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;说明：.在web app应用下状态条的颜色为黑色，默认值为default(白色)，可以定义为black（黑色）和black-translucent(灰色半透明)；</p>
+<p>&ensp;&ensp;&ensp;&ensp;&ensp; 用法：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"apple-mobile-web-app-status-bar-style"</span> content=<span class="string">"black"</span>/&gt;</span><br></pre></td></tr></table></figure></p>
+<p>四、<strong>http-equiv属性</strong><br>&ensp;&ensp;&ensp;&ensp;http-equiv顾名思义，相当于http协议中文件头的作用，它可以向浏览器传回一些有用的信息，以帮助正确和精确地显示网页内容，与之对应的属性值为content，content中的内容其实就是各个参数的变量值。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=<span class="string">"参数"</span>content=<span class="string">"参数变量值"</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p> http-equiv属性的参数：<br>   &ensp;&ensp;&ensp;&ensp;1. content-Type(设定网页字符集)(推荐使用HTML5的方式)</p>
+<p>   &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;说明：用于设定网页字符集，便于浏览器解析与渲染页面。</p>
+<p>   &ensp;&ensp;&ensp;&ensp;&ensp; 用法：<br> <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=<span class="string">"content-Type"</span> content=<span class="string">"text/html;charset=utf-8"</span>&gt;  <span class="comment">//旧的HTML，不推荐</span></span><br><span class="line">&lt;meta charset=<span class="string">"utf-8"</span>&gt; <span class="comment">//HTML5设定网页字符集的方式，推荐使用UTF-8</span></span><br></pre></td></tr></table></figure></p>
+<p>   &ensp;&ensp;&ensp;&ensp;2.X-UA-Compatible(浏览器采取何种版本渲染当前页面)</p>
+<p>   &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;说明：用于告知浏览器以何种版本来渲染页面。（一般都设置为最新模式，在各大框架中这个设置也很常见。)</p>
+<p>   &ensp;&ensp;&ensp;&ensp;&ensp; 用法：<br>   <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=<span class="string">"X-UA-Compatible"</span> content=<span class="string">"IE=edge,chrome=1"</span>/&gt; <span class="comment">//指定IE和Chrome使用最新版本渲染当前页面</span></span><br></pre></td></tr></table></figure></p>
+<p><table><tr></tr></table></p>
+<p><td bgcolor="#FAEBD7" align="left"><b>X-UA-Compatible0 标记语法</b><br><br>    &ensp;&ensp;&ensp;&ensp;X-UA-Compatible是针对IE8新加的一个设置，是为了避免制作出的页面在IE8下面出现错误，而指定使用其他浏览器版本来渲染网页内容，对于IE8之外的浏览器是不识别的。通俗点说，这个标签可以实现 IE 浏览器版本模拟。<br><br>     &ensp;&ensp;&ensp;&ensp;1.直接指定某个IE版本的标准文档模式。<br><br> &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;(1) 以下是要求模拟 IE8 的例子：<br><br> &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;meta http-equiv=”X-UA-Compatible” content=”IE=8”/&gt;<br><br> &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;（<font color="red">注意：这在IE7、IE6中无效，因为 X-UA-Compatible 是 IE8 才开始支持的</font>）<br><br> &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;(2) 以下是要求模拟 IE9 的例子：<br><br> &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;meta http-equiv=”X-UA-Compatible” content=”IE=9”/&gt;<br><br> &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;（<font color="red">注意：这不仅在IE7、IE6中无效，在 IE8 中也无效，因为不能模拟高于当前的版本</font>）<br><br>  &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;(3)&lt;meta http-equiv=”X-UA-Compatible” content=”IE=11,IE=10,IE=9,IE=8”&gt; <br><br>  &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;意思就是强制浏览器按照特定的版本标准进行渲染，但不支持IE7及以下版本。<br><br>   &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;(4)&lt;meta http-equiv=”X-UA-Compatible” content=”IE=7; IE=9” /&gt;<br><br>     &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;意思就是将IE8和IE7按照IE7标准渲染，但是IE9还是按照IE9的标准渲染。<br><br>   &ensp;&ensp;&ensp;&ensp;2.指定某个IE版本，但也允许例外。<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;在IE版本号前面加上 Emulate ，代表，如果网页开头有 &lt;!DOCTYPE&gt; 标记就使用该IE版本的标准文档模式，否则使用怪异模式（即等同于 IE=IE5）<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;(1)以下是要求模拟 IE8 的例子：<br><br> &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;meta http-equiv=”X-UA-Compatible” content=”IE=EmulateIE8”/&gt;<br><br> &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;根据例子代码，如果你的网页开头带有 &lt;!DOCTYPE&gt; 标记，则模拟 IE8， 等同于：<br><br> &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;meta http-equiv=”X-UA-Compatible” content=”IE=IE8”/&gt;<br><br> &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;如果你的网页开头没有 &lt;!DOCTYPE&gt; 标记，则模拟 IE6， 等同于：<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;meta http-equiv=”X-UA-Compatible” content=”IE=IE5”/&gt;<br><br> &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;不建议使用这个语法。<br><br>&ensp;&ensp;&ensp;&ensp;3.总是使用最新版本文档模式。<br><br> &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;以下是例子：<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;meta http-equiv=”X-UA-Compatible” content=”IE=edge”/&gt;<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;根据例子代码，IE浏览器将总是使用最新版本的文档模式，如用 IE8 访问就是 IE8 文档<br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;模式，用 IE9 访问就是 IE9 模式，用 IE10 访问就是 IE10 模式，用 IE11 访问就是 IE11 模<br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;式。<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<font color="red">注意：此声明并不是多此一举，如果你不使用 IE=edge 标记，IE浏览器会根据你的网页<br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;内容采用兼容视图，可能采用更低版本。除非不准备兼容所有旧版IE，否则也不建议使用<br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;这个语法。</font><br><br>&ensp;&ensp;&ensp;&ensp;4.除了标准用法之外，还有一些特殊用法，如：<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;meta http-equiv=”X-UA-Compatible” content=”IE=edge,chrome=1”/&gt;<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;这段代码的意思是，在不改变IE的外观情况下使用Chrome内核。<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;使用条件：<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;(1)如果存在客户端Chrome Frame并启用，那么浏览器访问页面会被Chrome内核渲<br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;染；也就是说IE浏览器变身Chrome是可以的，但前提是客户端安装了Chrome Frame。<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;(2)使用IE内核浏览器来访问，会渲染至该浏览器的最高版本，比如你使用IE9浏览<br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;器，那么就算在兼容模式切换至IE7，但仍会渲染成IE9的样子（当然IE7浏览器是不会渲<br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;染成IE9的）。</td><br>   &ensp;&ensp;&ensp;&ensp;3.cache-control(指定请求和响应遵循的缓存机制)</p>
+<p> &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;用法1.</p>
+<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;说明：指导浏览器如何缓存某个响应以及缓存多长时间。</p>
+<p>  &ensp;&ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp;用法：<br>  <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=<span class="string">"cache-control"</span> content=<span class="string">"no-cache"</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;content属性的值：</p>
+<ul>
+<li>no-cache: 先发送请求，与服务器确认该资源是否被更改，如果未被更改，则使用缓存。<ul>
+<li>no-store: 不允许缓存，每次都要去服务器上，下载完整的响应。（安全措施）</li>
+<li>public : 缓存所有响应，但并非必须。因为max-age也可以做到相同效果</li>
+<li>private : 只为单个用户缓存，因此不允许任何中继进行缓存。（比如说CDN就不允许缓存private的响应）</li>
+<li>maxage : 表示当前请求开始，该响应在多久内能被缓存和重用，而不去服务器重新请求。例如：max-age=60表示响应可以再缓存和重用 60 秒。</li>
+</ul>
+</li>
+</ul>
+<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;用法2.(禁止百度自动转码)</p>
+<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;说明：用于禁止当前页面在移动端浏览时，被百度自动转码。虽然百度的本意是好的，但是转码效果很多时候却不尽人意。所以可以在head中加入如下代码，就可以避免百度自动转码了。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=<span class="string">"Cache-Control"</span> content=<span class="string">"no-siteapp"</span> /&gt;</span><br></pre></td></tr></table></figure></p>
+<p>  &ensp;&ensp;&ensp;&ensp;4.expires(网页到期时间)</p>
+<p>   &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;说明:用于设定网页的到期时间，过期后网页必须到服务器上重新传输。<font color="red">必须使用GMT的时间格式。</font></p>
+<p>   &ensp;&ensp;&ensp;&ensp;&ensp;  用法：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=<span class="string">"expires"</span> content=<span class="string">"Sunday 26 October 2016 01:00 GMT"</span> /&gt;</span><br></pre></td></tr></table></figure></p>
+<p>  &ensp;&ensp;&ensp;&ensp;5. refresh(自动刷新并指向某页面)</p>
+<p>   &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;说明：网页将在设定的时间内，自动刷新并调向设定的网址。<br>&ensp;&ensp;&ensp;&ensp;&ensp;  用法：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=<span class="string">"refresh"</span> content=<span class="string">"2；URL=http://www.lxxyx.win/"</span>&gt; <span class="comment">//意思是2秒后跳转向我的博客</span></span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;6.  Set-Cookie(cookie设定)</p>
+<p> &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;说明：如果网页过期。那么这个网页存在本地的cookies也会被自动删除。<br> &ensp;&ensp;&ensp;&ensp;&ensp;  用法：<br> <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=<span class="string">"Set-Cookie"</span> content=<span class="string">"name, date"</span>&gt; <span class="comment">//格式</span></span><br><span class="line">&lt;meta http-equiv=<span class="string">"Set-Cookie"</span> content=<span class="string">"User=Lxxyx; path=/; expires=Sunday, 10-Jan-16 10:00:00 GMT"</span>&gt; <span class="comment">//具体范例</span></span><br></pre></td></tr></table></figure></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
+                    
+                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link" data-ae="false" data-ci="" data-cs="" data-r="" data-o="" data-a="" data-d="false">查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>
