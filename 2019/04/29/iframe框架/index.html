@@ -59,7 +59,8 @@
 <p>&nbsp;&nbsp;<font color="red">我们通常使用iframe最基本的特性，就是能自由操作iframe和父框架的内容(DOM). 但前提条件是同域. 如果跨域顶多只能实现页面跳转window.location.href.</font></p>
 <p>&nbsp;&nbsp;1.父页面获取子页面内容</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;(1).主要是contentWindow和contentDocument两个API</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iframe.contentWindow, 获取iframe的window对象<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iframe.contentDocument,获取iframe的document对象<br>&nbsp;&nbsp;&nbsp;&nbsp;(2).结合Name属性，通过window提供的frames获取.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iframe.contentWindow, 获取iframe的window对象<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iframe.contentDocument,获取iframe的document对象</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;(2).结合Name属性，通过window提供的frames获取.</p>
 <p>&nbsp;&nbsp;2.子页面获取父页面内容</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">同理，在同域下，父页面可以获取子iframe的内容，那么子iframe同样也能操作父页面内容。</font><br>&nbsp;&nbsp;在iframe中，可以通过在window上挂载的几个API进行获取.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;(1)window.parent 获取上一级的window对象，如果还是iframe则是该iframe的window对象<br>&nbsp;&nbsp;&nbsp;&nbsp;(2)window.top 获取最顶级容器的window对象，即，就是你打开页面的文档<br>&nbsp;&nbsp;&nbsp;&nbsp;(3)window.self 返回自身window的引用。可以理解 window===window.self(脑残)</p>
