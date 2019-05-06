@@ -77,7 +77,7 @@
 <p>&ensp;&ensp;&ensp;&ensp; name属性主要用于描述网页，比如网页的关键词，叙述等。与之对应的属性值为content，content中的内容是对name填入类型的具体描述，便于搜索引擎抓取。</p>
    <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"参数"</span> content=<span class="string">"具体的描述"</span>&gt;。</span><br></pre></td></tr></table></figure>
 <p>  <strong> name属性的参数(红色标记为常用的属性)：</strong><br>   &ensp;&ensp;&ensp;&ensp;<font color="red">1. keywords(关键字)</font></p>
-<p>   &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<strong>说明：</strong>用于告诉搜索引擎，你网页的关键字。</p>
+<p>   &ensp;&ensp;&ensp;&ensp;&ensp;&ensp; <strong>说明：</strong> 用于告诉搜索引擎，你网页的关键字。</p>
 <p>   &ensp;&ensp;&ensp;&ensp;&ensp; <strong>用法：</strong><br> <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"keywords"</span> content=<span class="string">"Lxxyx,博客，文科生，前端"</span>&gt;</span><br></pre></td></tr></table></figure></p>
 <p> &ensp;&ensp;&ensp;&ensp;<font color="red">2.description(网站内容的描述)</font></p>
 <p> &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<strong>说明：</strong>用于告诉搜索引擎，你网站的主要内容。</p>
@@ -129,8 +129,9 @@
 <p>  &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<strong>利用meta标签对viewport进行控制：</strong></p>
 <p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;移动设备默认的viewport是layout viewport，但在进行移动设备网站的开发时，需要的是ideal viewport。要得到ideal viewport，需要用到meta标签。</p>
 <ul>
-<li>width：控制 viewport 的大小，可以给它指定一个值如：600，或者特殊的值，如device-width为设备的宽度（单位是缩放为100%的CSS的像素）</li>
-<li>initial-scale：页面的初始缩放值</li>
+<li>width：width：宽度（数值 / device-width）（范围从200 到10,000，默认为980 像素）</li>
+<li>height：高度（数值 / device-height）（范围从223 到10,000）</li>
+<li>initial-scale：页面的初始缩放值（范围从&gt;0 到10）</li>
 <li>minimum-scale：允许用户的最小缩放值</li>
 <li>maximum-scale：允许用户的最大缩放值</li>
 <li>user-scalable：是否允许用户进行缩放，no 不允许，yes允许</li>
