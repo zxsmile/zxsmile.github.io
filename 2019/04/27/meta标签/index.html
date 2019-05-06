@@ -85,20 +85,18 @@
 <p>&ensp;&ensp;&ensp;&ensp; 3. robots(定义搜索引擎爬虫的索引方式)</p>
 <p>  &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;说明：robots用来告诉爬虫哪些页面需要索引，哪些页面不需要索引。<br>   &ensp;&ensp;&ensp;&ensp;&ensp;content的参数有：</p>
 <ul>
-<li><p>none : 搜索引擎将忽略此网页，等价于noindex，nofollow。</p>
-<ul>
+<li>none : 搜索引擎将忽略此网页，等价于noindex，nofollow。</li>
 <li>noindex : 搜索引擎不索引此网页。</li>
 <li>nofollow: 搜索引擎不继续通过此网页的链接索引搜索其它的网页。</li>
 <li>all(默认): 搜索引擎将索引此网页与继续通过此网页的链接索引，等价于index，follow。</li>
 <li>index : 搜索引擎索引此网页。</li>
-<li>follow : 搜索引擎继续通过此网页的链接索引搜索其它的网页。</li>
-</ul>
-<p>&ensp;&ensp;用法：</p>
+<li><p>follow : 搜索引擎继续通过此网页的链接索引搜索其它的网页。</p>
+<p> &ensp;&ensp;用法：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"robots"</span> content=<span class="string">"none"</span>&gt;</span><br></pre></td></tr></table></figure>
 <p>&ensp;&ensp;&ensp;&ensp; 4.author(作者)</p>
-<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;说明：用于标注网页作者。</p>
+<p> &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;说明：用于标注网页作者。</p>
 <p>&ensp;&ensp;&ensp;&ensp;&ensp; 用法：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"author"</span> content=<span class="string">"Lxxyx,841380530@qq.com"</span>&gt;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"author"</span> content=<span class="string">"Lxxyx,841380530@qq.com"</span>&gt;</span><br></pre></td></tr></table></figure>
 <p>&ensp;&ensp;&ensp;&ensp; 5. generator(网页制作软件)</p>
 </li>
 </ul>
