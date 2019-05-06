@@ -132,19 +132,19 @@
 <li>width：width：宽度（数值 / device-width）（范围从200 到10,000，默认为980 像素）</li>
 <li>height：高度（数值 / device-height）（范围从223 到10,000）</li>
 <li>initial-scale：页面的初始缩放值（范围从&gt;0 到10）</li>
-<li>minimum-scale：允许用户的最小缩放值</li>
-<li>maximum-scale：允许用户的最大缩放值</li>
+<li>minimum-scale：允许用户的最小缩放值(范围0.25至10.0之间)</li>
+<li>maximum-scale：允许用户的最大缩放值(范围0.25至10.0之间)</li>
 <li>user-scalable：是否允许用户进行缩放，no 不允许，yes允许</li>
 </ul>
 <p>&ensp;&ensp; &ensp;&ensp;<strong>用法：</strong><br> <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"</span>&gt;</span><br></pre></td></tr></table></figure></p>
 <p> &ensp;&ensp; &ensp;&ensp;该meta标签的作用是让当前viewport的宽度等于设备的宽度，同时不允许用户手动缩放。当然maximum-scale=1.0, user-scalable=no不是必需的，是否允许用户手动播放根据网站的需求来定，但把width设为width-device基本是必须的，这样能保证不会出现横向滚动条。<br>  &ensp;&ensp; &ensp;&ensp;width能控制layout viewport的宽度，如果不指定该属性，layout viewport将默认为980px或1024px（也可能是其它值，由设备本身决定），如果把layout viewport的宽度设置为移动设备的宽度，那么layout viewport将成为ideal viewport。</p>
 <p> &ensp;&ensp; &ensp;&ensp;其实，要把当前的viewport宽度设为ideal viewport的宽度，既可以设置width=device-width，也可以设置initial-scale=1，但有一个小缺陷，就是width=device-width会导致iphone、ipad横竖屏不分，initial-scale=1会导致IE横竖屏不分，都以竖屏的ideal viewport宽度为准。所以，最完美的写法两者都写上去， initial-scale=1 解决 iphone、ipad的缺陷，width=device-width解决IE的缺陷。</p>
+<p>&ensp;&ensp; &ensp;&ensp;如果不是响应式网站，不要使用initial-scale或者禁用缩放，注意，很多人使用initial-scale=1到非响应式网站上，这会让网站以100%宽度渲染，用户需要手动移动页面或者缩放。如果和initial-scale=1同时使用user-scalable=no或maximum-scale=1，则用户将不能放大/缩小网页来看到全部的内容。</p>
 <p>  &ensp;&ensp;&ensp;&ensp;10.format-detection</p>
 <p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<strong>说明：</strong>我们可以通过这个属性禁止自动识别电话和邮箱。</p>
 <p>&ensp;&ensp;&ensp;&ensp;&ensp; <strong>用法：</strong><br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"format-detection"</span> content=<span class="string">"telephone=no,email=no"</span>/&gt;</span><br></pre></td></tr></table></figure></p>
 <p>  &ensp;&ensp;&ensp;&ensp;11.apple-mobile-web-app-capable（网站开启对web app程序的支持）</p>
-<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<strong>说明：</strong>网站开启对web app的支持</p>
-<p>&ensp;&ensp;&ensp;&ensp;&ensp; <strong>用法：</strong><br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"app-mobile-web-app-capable"</span> content=<span class="string">"yes"</span>/&gt;</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<strong>说明：</strong>apple-mobile-web-app-capable的作用就是删除默认的苹果工具栏和菜单栏。content有两个值”yes”和”no”,当我们需要显示工具栏和菜单栏时，这个行meta就不用加了，默认就是显示。<br>&ensp;&ensp;&ensp;&ensp;&ensp; <strong>用法：</strong><br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"app-mobile-web-app-capable"</span> content=<span class="string">"yes"</span>/&gt;</span><br></pre></td></tr></table></figure></p>
 <p>  &ensp;&ensp;&ensp;&ensp;12.apple-mobile-web-app-status-bar-style（改变顶部状态条的颜色）</p>
 <p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<strong>说明：</strong>在web app应用下状态条的颜色为黑色，默认值为default(白色)，可以定义为black（黑色）和black-translucent(灰色半透明)；</p>
 <p>&ensp;&ensp;&ensp;&ensp;&ensp; <strong>用法：</strong><br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"apple-mobile-web-app-status-bar-style"</span> content=<span class="string">"black"</span>/&gt;</span><br></pre></td></tr></table></figure></p>
