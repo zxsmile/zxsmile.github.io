@@ -92,10 +92,10 @@
 </ul>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;<strong>注：</strong></p>
 <ul>
-<li>本机查找完缓存后如果没有结果，会先查找hosts文件，如果没有找到再把查询发送给DNS服务器，但这仅仅是默认情况，这个默认顺序是可以改变的。在/etc/nsswitch.conf中有一行” hosts: files dns”就是定义先查找hosts文件还是先提交给DNS服务器的，如果修改该行为”hosts: dns files”则先提交给DNS服务器，这种情况下hosts文件几乎就不怎么用的上了。<ul>
-<li>由于缓存是多层次缓存的，所以真正的查询可能并没有那么多步骤，上图的步骤是完全没有所需缓存的查询情况。假如某主机曾经向DNS服务器提交了<a href="http://www.baidu.com的查询，那么在DNS服务器上除了缓存了www.baidu.com的记录，还缓存了&quot;.com&quot;和&quot;baidu.com&quot;的记录，如果再有主机向该DNS服务器提交ftp.baidu.com的查询，那么将跳过&quot;.“和”.com&quot;的查询过程直接向baidu.com发出查询请求。" target="_blank" rel="noopener">www.baidu.com的查询，那么在DNS服务器上除了缓存了www.baidu.com的记录，还缓存了&quot;.com&quot;和&quot;baidu.com&quot;的记录，如果再有主机向该DNS服务器提交ftp.baidu.com的查询，那么将跳过&quot;.“和”.com&quot;的查询过程直接向baidu.com发出查询请求。</a></li>
-<li>DNS解析过程中存在两种查询类型：递归查询（从客户机至指定DNS服务器）、迭代查询（从DNS服务器至各个域）。</li>
-</ul>
+<li>本机查找完缓存后如果没有结果，会先查找hosts文件，如果没有找到再把查询发送给DNS服务器，但这仅仅是默认情况，这个默认顺序是可以改变的。在/etc/nsswitch.conf中有一行” hosts: files dns”就是定义先查找hosts文件还是先提交给DNS服务器的，如果修改该行为”hosts: dns files”则先提交给DNS服务器，这种情况下hosts文件几乎就不怎么用的上了。</li>
+<li><p>由于缓存是多层次缓存的，所以真正的查询可能并没有那么多步骤，上图的步骤是完全没有所需缓存的查询情况。假如某主机曾经向DNS服务器提交了<a href="http://www.baidu.com的查询，那么在DNS服务器上除了缓存了" target="_blank" rel="noopener">www.baidu.com的查询，那么在DNS服务器上除了缓存了</a> <a href="http://www.baidu.com的记录，还缓存了&quot;.com&quot;和&quot;baidu.com&quot;的记录，如果再有主机向该DNS服务器提交ftp.baidu.com的查询，那么将跳过&quot;.“和”.com&quot;的查询过程直接向baidu.com发出查询请求。" target="_blank" rel="noopener">www.baidu.com的记录，还缓存了&quot;.com&quot;和&quot;baidu.com&quot;的记录，如果再有主机向该DNS服务器提交ftp.baidu.com的查询，那么将跳过&quot;.“和”.com&quot;的查询过程直接向baidu.com发出查询请求。</a></p>
+</li>
+<li><p>DNS解析过程中存在两种查询类型：递归查询（从客户机至指定DNS服务器）、迭代查询（从DNS服务器至各个域）。</p>
 </li>
 </ul>
 <p><strong>解析顺序</strong></p>
@@ -152,8 +152,8 @@
 </ul>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;(4)NS记录：是域名DNS服务器记录，全称Name Server记录，用来指定该域名由哪个DNS服务器来对您的域名进行解析。您注册域名时，总有默认的DNS服务器，每个注册的域名都是由一组DNS域名服务器来解析的。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;(5) TXT记录：一种文本记录，仅用于对主机名或者域名的记录信息，对解析无实质影响。<br>&nbsp;&nbsp;&nbsp;&nbsp;(6)TTL值：全称是“生存时间（Time To Live)”，简单的说它表示DNS记录在DNS服务器上缓存时间。默认即可。<br>泛解析：使用“*”建立二级域名解析到同一独立IP。在域名前添加任何子域名，均可解析到指定的服务器IP地址。 </p>
-<pre><code>![](DNS2.png)     
-</code></pre>
+<p> <img src="/2019/05/14/DNS/DNS2.png" alt="">     </p>
+
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
                 <source type="audio/mpeg" src="">
