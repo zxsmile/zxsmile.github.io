@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="" class="loading">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hexo</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Fechin,"> 
+    
+    <meta name="author" content="zxSmile"> 
+    <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+</head>
+</html>
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">formdata详解</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div class="main">
+        <h1 class="title">formdata详解</h1>
+        <div class="stuff">
+            <span>九月 13, 2019</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <h1 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h1><p>FormData对象用以将数据编译成键值对，以便用XMLHttpRequest来发送数据。其主要用于发送表单数据，但亦可用于发送带键数据(keyed data)，而独立于表单使用。如果表单enctype属性设为multipart/form-data ，则会使用表单的submit()方法来发送数据，从而，发送数据具有同样形式。</p>
+<h1 id="FormData的主要用途有两个："><a href="#FormData的主要用途有两个：" class="headerlink" title="FormData的主要用途有两个："></a>FormData的主要用途有两个：</h1><p>1、将form表单元素的name与value进行组合，实现表单数据的序列化，从而减少表单元素的拼接，提高工作效率。<br>2、异步上传文件</p>
+<h1 id="从零开始创建FormData对象"><a href="#从零开始创建FormData对象" class="headerlink" title="从零开始创建FormData对象"></a>从零开始创建FormData对象</h1><p>你可以自己创建一个FormData对象，然后调用它的append()方法来添加字段，像这样：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> formData = <span class="keyword">new</span> FormData();</span><br><span class="line"></span><br><span class="line">formData.append(<span class="string">"username"</span>, <span class="string">"Groucho"</span>);</span><br><span class="line">formData.append(<span class="string">"accountnum"</span>, <span class="number">123456</span>); <span class="comment">//数字123456会被立即转换成字符串 "123456"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// HTML 文件类型input，由用户选择</span></span><br><span class="line">formData.append(<span class="string">"userfile"</span>, fileInputElement.files[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// JavaScript file-like 对象</span></span><br><span class="line"><span class="keyword">var</span> content = <span class="string">'&lt;a id="a"&gt;&lt;b id="b"&gt;hey!&lt;/b&gt;&lt;/a&gt;'</span>; <span class="comment">// 新文件的正文...</span></span><br><span class="line"><span class="keyword">var</span> blob = <span class="keyword">new</span> Blob([content], &#123; type: <span class="string">"text/xml"</span>&#125;);</span><br><span class="line"></span><br><span class="line">formData.append(<span class="string">"webmasterfile"</span>, blob);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> request = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">request.open(<span class="string">"POST"</span>, <span class="string">"http://foo.com/submitform.php"</span>);</span><br><span class="line">request.send(formData);</span><br></pre></td></tr></table></figure></p>
+<p><strong>注意：</strong>字段 “userfile” 和 “webmasterfile”  都包含一个文件. 字段 “accountnum” 是数字类型，它将被FormData.append()方法转换成字符串类型<font color="red">(FormData 对象的字段类型可以是 Blob, File, 或者 string: 如果它的字段类型不是Blob也不是File，则会被转换成字符串类)。</font></p>
+<p>上面的示例创建了一个FormData实例，包含”username”, “accountnum”, “userfile” 和 “webmasterfile”四个字段，然后使用XMLHttpRequest的send()方法发送表单数据。字段 “webmasterfile” 是 Blob类型。一个 Blob对象表示一个不可变的, 原始数据的类似文件对象。Blob表示的数据不一定是一个JavaScript原生格式。 File 接口基于Blob，继承 blob功能并将其扩展为支持用户系统上的文件。你可以通过 Blob() 构造函数创建一个Blob对象。<br><b>Blob说明：</b></p>
+<h1 id="通过表单对formData进行初始化"><a href="#通过表单对formData进行初始化" class="headerlink" title="通过表单对formData进行初始化"></a>通过表单对formData进行初始化</h1><p>创建表单：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;form id=<span class="string">"advForm"</span>&gt;</span><br><span class="line">    &lt;p&gt;广告名称：&lt;input type=<span class="string">"text"</span> name=<span class="string">"advName"</span>  value=<span class="string">"xixi"</span>&gt;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;广告类别：&lt;select name=<span class="string">"advType"</span>&gt;</span><br><span class="line">        &lt;option value=<span class="string">"1"</span>&gt;轮播图&lt;/option&gt;</span><br><span class="line">        &lt;option value=<span class="string">"2"</span>&gt;轮播图底部广告&lt;/option&gt;</span><br><span class="line">        &lt;option value=<span class="string">"3"</span>&gt;热门回收广告&lt;/option&gt;</span><br><span class="line">        &lt;option value=<span class="string">"4"</span>&gt;优品精选广告&lt;/option&gt;</span><br><span class="line">    &lt;/select&gt;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;&lt;input type=<span class="string">"button"</span> id=<span class="string">"btn"</span> value=<span class="string">"添加"</span>&gt;&lt;/p&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure></p>
+<p>通过表单元素作为参数，实现对formData的初始化：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获得表单按钮元素</span></span><br><span class="line"><span class="keyword">var</span> btn=document.querySelector(<span class="string">"#btn"</span>);</span><br><span class="line"><span class="comment">//为按钮添加点击事件</span></span><br><span class="line">btn.onclick=<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//根据ID获得页面当中的form表单元素</span></span><br><span class="line">    <span class="keyword">var</span> form=document.querySelector(<span class="string">"#advForm"</span>);</span><br><span class="line">    <span class="comment">//将获得的表单元素作为参数，对formData进行初始化</span></span><br><span class="line">    <span class="keyword">var</span> formdata=<span class="keyword">new</span> FormData(form);</span><br><span class="line">    <span class="comment">//通过get方法获得name为advName元素的value值</span></span><br><span class="line">    console.log(formdata.get(<span class="string">"advName"</span>));<span class="comment">//xixi</span></span><br><span class="line">    <span class="comment">//通过get方法获得name为advType元素的value值</span></span><br><span class="line">    console.log(formdata.get(<span class="string">"advType"</span>));<span class="comment">//1 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="FormData-对象方法介绍"><a href="#FormData-对象方法介绍" class="headerlink" title="FormData 对象方法介绍"></a>FormData 对象方法介绍</h1><ul>
+<li><p>通过get(key)与getAll(key)来获取相对应的值</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取key为age的第一个值</span></span><br><span class="line">formdata.get(<span class="string">"age"</span>); </span><br><span class="line"> <span class="comment">// 获取key为age的所有值，返回值为数组类型</span></span><br><span class="line">formdata.getAll(<span class="string">"age"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>append()<br>append()方法用于向 FormData 对象中添加键值对(通过append(key,value)在数据末尾追加数据)：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过FormData构造函数创建一个空对象</span></span><br><span class="line"><span class="keyword">var</span> formdata=<span class="keyword">new</span> FormData();</span><br><span class="line"><span class="comment">//通过append()方法在末尾追加key为name值为laoliu的数据</span></span><br><span class="line">formdata.append(<span class="string">"name"</span>,<span class="string">"laoliu"</span>);</span><br><span class="line"><span class="comment">//通过append()方法在末尾追加key为name值为laoli的数据</span></span><br><span class="line">formdata.append(<span class="string">"name"</span>,<span class="string">"laoli"</span>);</span><br><span class="line"><span class="comment">//通过append()方法在末尾追加key为name值为laotie的数据</span></span><br><span class="line">formdata.append(<span class="string">"name"</span>,<span class="string">"laotie"</span>);</span><br><span class="line"><span class="comment">//通过get方法读取key为name的第一个值</span></span><br><span class="line">console.log(formdata.get(<span class="string">"name"</span>));<span class="comment">//laoliu</span></span><br><span class="line"><span class="comment">//通过getAll方法读取key为name的所有值</span></span><br><span class="line">console.log(formdata.getAll(<span class="string">"name"</span>));<span class="comment">//["laoliu", "laoli", "laotie"]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过set(key, value)来设置修改数据<br>key的值不存在，会添加一条数据</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过FormData构造函数创建一个空对象</span></span><br><span class="line"><span class="keyword">var</span> formdata=<span class="keyword">new</span> FormData();</span><br><span class="line"><span class="comment">//如果key的值不存在会为数据添加一个key为name值为laoliu的数据</span></span><br><span class="line">formdata.set(<span class="string">"name"</span>,<span class="string">"laoli"</span>);</span><br><span class="line"><span class="comment">//通过get方法读取key为name的第一个值</span></span><br><span class="line">console.log(formdata.get(<span class="string">"name"</span>));<span class="comment">//laoli</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>key的值存在，会修改对应的value值<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过FormData构造函数创建一个空对象</span></span><br><span class="line"><span class="keyword">var</span> formdata=<span class="keyword">new</span> FormData();</span><br><span class="line"><span class="comment">//通过append()方法在末尾追加key为name值为laoliu的数据</span></span><br><span class="line">formdata.append(<span class="string">"name"</span>,<span class="string">"laoliu"</span>);</span><br><span class="line"><span class="comment">//通过append()方法在末尾追加key为name值为laoliu2的数据</span></span><br><span class="line">formdata.append(<span class="string">"name"</span>,<span class="string">"laoliu2"</span>);</span><br><span class="line"><span class="comment">//通过get方法读取key为name的第一个值</span></span><br><span class="line">console.log(formdata.get(<span class="string">"name"</span>));<span class="comment">//laoliu</span></span><br><span class="line"><span class="comment">//通过getAll方法读取key为name的所有值</span></span><br><span class="line">console.log(formdata.getAll(<span class="string">"name"</span>));<span class="comment">//["laoliu", "laoliu2"]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//将存在的key为name的值修改为laoli</span></span><br><span class="line">formdata.set(<span class="string">"name"</span>,<span class="string">"laoli"</span>);</span><br><span class="line"><span class="comment">//通过get方法读取key为name的第一个值</span></span><br><span class="line">console.log(formdata.get(<span class="string">"name"</span>));<span class="comment">//laoli</span></span><br><span class="line"><span class="comment">//通过getAll方法读取key为name的所有值</span></span><br><span class="line">console.log(formdata.getAll(<span class="string">"name"</span>));<span class="comment">//["laoli"]</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>通过has(key)来判断是否存在对应的key值</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过FormData构造函数创建一个空对象</span></span><br><span class="line"><span class="keyword">var</span> formdata=<span class="keyword">new</span> FormData();</span><br><span class="line"><span class="comment">//通过append()方法在末尾追加key为name值为laoliu的数据</span></span><br><span class="line">formdata.append(<span class="string">"name"</span>,<span class="string">"laoliu"</span>);</span><br><span class="line"><span class="comment">//判断是否包含key为name的数据</span></span><br><span class="line">console.log(formdata.has(<span class="string">"name"</span>));<span class="comment">//true</span></span><br><span class="line"><span class="comment">//判断是否包含key为age的数据</span></span><br><span class="line">console.log(formdata.has(<span class="string">"age"</span>));<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>delete()<br>接收一个参数，表示你要删除的 key 值的名字,如果有多个相同 key 值，会一并删除：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过FormData构造函数创建一个空对象</span></span><br><span class="line"><span class="keyword">var</span> formdata=<span class="keyword">new</span> FormData();</span><br><span class="line"><span class="comment">//通过append()方法在末尾追加key为name值为laoliu的数据</span></span><br><span class="line">formdata.append(<span class="string">"name"</span>,<span class="string">"laoliu"</span>);</span><br><span class="line">console.log(formdata.get(<span class="string">"name"</span>));<span class="comment">//laoliu</span></span><br><span class="line"><span class="comment">//删除key为name的值</span></span><br><span class="line">formdata.delete(<span class="string">"name"</span>);</span><br><span class="line">console.log(formdata.get(<span class="string">"name"</span>));<span class="comment">//null</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>keys()<br>*该方法不需要接收参数，返回一个迭代器，通过这个迭代器，我们可以遍历FormData 对象中所有的 key。以上面的form为例：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;form name=<span class="string">"form1"</span> id=<span class="string">"form1"</span>&gt;  </span><br><span class="line"></span><br><span class="line">        &lt;p&gt;name:&lt;input type=<span class="string">"text"</span> name=<span class="string">"name"</span> /&gt;&lt;/p&gt;  </span><br><span class="line"></span><br><span class="line">        &lt;p&gt;gender:&lt;input type=<span class="string">"radio"</span> name=<span class="string">"gender"</span> value=<span class="string">"1"</span> /&gt;male &lt;input type=<span class="string">"radio"</span> name=<span class="string">"gender"</span> value=<span class="string">"2"</span> /&gt;female&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">        &lt;p&gt;stu-number：&lt;input type=<span class="string">"text"</span> name=<span class="string">"number"</span> /&gt;&lt;/p&gt;  </span><br><span class="line"></span><br><span class="line">        &lt;p&gt;photo:&lt;input type=<span class="string">"file"</span> name=<span class="string">"photo"</span> id=<span class="string">"photo"</span>&gt;&lt;/p&gt;  </span><br><span class="line"></span><br><span class="line">        &lt;p&gt;&lt;input type=<span class="string">"button"</span> name=<span class="string">"b1"</span> value=<span class="string">"submit"</span> onclick=<span class="string">"fsubmit()"</span> /&gt;&lt;/p&gt;  </span><br><span class="line"></span><br><span class="line">&lt;/form&gt;  </span><br><span class="line"></span><br><span class="line">&lt;p id=<span class="string">"result"</span>&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> formdata=<span class="keyword">new</span> FormData();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key of formdata.keys()) &#123;</span><br><span class="line"></span><br><span class="line">           console.log(key); </span><br><span class="line"></span><br><span class="line">        &#125;  <span class="comment">//name,gender,number,photo</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>values()<br>有遍历 key 的迭代，当然也就少不了遍历 value 的迭代器了。values()就是遍历value 的迭代器，用法与 keys() 类似：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> formdata=<span class="keyword">new</span> FormData();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> value of formdata.values()) &#123;</span><br><span class="line"></span><br><span class="line">           console.log(value); </span><br><span class="line"></span><br><span class="line">        &#125; <span class="comment">//sean,1,123456,file&#123;...&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>entries()<br>有遍历 key 的迭代器，也有遍历 value 的迭代器，为何不搞一个两者一起的呢！entries()就是返回一个包含键值对的迭代器：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> formdata=<span class="keyword">new</span> FormData();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> pair of formdata.entries()) &#123;</span><br><span class="line"></span><br><span class="line">           console.log(pair[<span class="number">0</span>]+ <span class="string">', '</span>+ pair[<span class="number">1</span>]); </span><br><span class="line"></span><br><span class="line">        &#125;  <span class="comment">// name,sean</span></span><br><span class="line">           <span class="comment">// gender,1</span></span><br><span class="line">           <span class="comment">// number,123456</span></span><br><span class="line">           <span class="comment">// photo,[object,File]</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="FormData兼容性问题"><a href="#FormData兼容性问题" class="headerlink" title="FormData兼容性问题"></a>FormData兼容性问题</h1><p>由于 FormData 是 XMLHttpRequest Level 2 新增的接口，现在 低于IE10 的IE浏览器不支持 FormData ，至于 上面介绍的 FormData 对象的方法经过测试，在 IE 浏览器中都不支持。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
+                    
+                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link" data-ae="false" data-ci="" data-cs="" data-r="" data-o="" data-a="" data-d="false">查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>
