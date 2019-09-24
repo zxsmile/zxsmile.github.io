@@ -106,7 +106,7 @@
 <p>绝对定位会使元素脱离文档流，它会让元素浮起来(即：z-index的值大于0)，它在文档流中的位置会被删除。它只能根据祖先类元素(父类以上)进行定位，而这个祖先类还必须是以postion非static方式定位的， &lt;font color=’red&gt;举个例子，a元素使用absoulte定位，它会从父类开始找起，寻找以position非static方式定位的祖先类元素(注意，一定要是直系祖先才算哦~），直到<html>标签为止，这里还需要注意的是，relative和static方式在最外层时是以<body>标签为定位原点的，而absoulte方式在无父级是position非static定位时是以<html>作为原点定位。<html>和<body>元素相差9px左右。。<br></body></html></html></body></html></p>
 <p><img src="/2019/09/24/position详解/absolute1.jpg" alt=""></p>
 <p><img src="/2019/09/24/position详解/absolute2.jpg" alt=""></p>
-<p>祖先类的margin会让子类的absoulte跟着偏移，而padding却不会让子类的absoulte发生偏移。总结一下，就是absoulte是根据祖先类的border进行的定位。</p>
+<p>祖先类的margin会让子类的absoulte跟着偏移，而padding却不会让子类的absoulte发生偏移。总结一下，就是absoulte是根据祖先类的border进行的定位。<br><br>position：absolute和float会隐式的改变display类型，不论之前什么类型的元素（display：none除外），只要设置了position：absolute、float：left或float：right中任意一个，都会让元素以display：inline-block的方式显示：可以设置长宽，默认宽度并不占满父元素</p>
 <p>7.fixed<br></p>
 <p>固定定位会使元素脱离文档流，和绝对定位类似，相对于浏览器窗口进行定位。</p>
 <p>8.sticky<br><br>粘性布局不会使元素脱离文档流，可以说是相对定位relative和固定定位fixed的结合。<br>使用条件：</p>
