@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="" class="loading">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hexo</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Fechin,"> 
+    
+    <meta name="author" content="zxSmile"> 
+    <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+</head>
+</html>
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">水平垂直居中</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div class="main">
+        <h1 class="title">水平垂直居中</h1>
+        <div class="stuff">
+            <span>十月 04, 2019</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <h2 id="仅居中元素定宽高适用"><a href="#仅居中元素定宽高适用" class="headerlink" title="仅居中元素定宽高适用"></a>仅居中元素定宽高适用</h2><ul>
+<li>absolute+负margin</li>
+<li>absolute+ margin auto</li>
+<li>absolute+calc</li>
+</ul>
+<h2 id="居中元素不定宽高"><a href="#居中元素不定宽高" class="headerlink" title="居中元素不定宽高"></a>居中元素不定宽高</h2><ul>
+<li>absolute + transform</li>
+<li>flex</li>
+<li>line-height</li>
+<li>table</li>
+<li>css-table</li>
+<li>grid</li>
+<li>writing-mode</li>
+</ul>
+<h3 id="一、position-负margin"><a href="#一、position-负margin" class="headerlink" title="一、position+负margin"></a>一、position+负margin</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">   .box&#123;</span><br><span class="line">       height: <span class="number">500</span>px;</span><br><span class="line">       background: green;</span><br><span class="line">       position:relative;</span><br><span class="line">   &#125;</span><br><span class="line">   .item&#123;</span><br><span class="line">       width:<span class="number">300</span>px;</span><br><span class="line">       height:<span class="number">300</span>px;</span><br><span class="line">       background: red;</span><br><span class="line">       position: absolute;</span><br><span class="line">       left:<span class="number">50</span>%;</span><br><span class="line">       top:<span class="number">50</span>%;</span><br><span class="line">       margin-top:<span class="number">-150</span>px;</span><br><span class="line">       margin-left:<span class="number">-150</span>px;</span><br><span class="line">   &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span>='<span class="title">box</span>'&gt;</span></span><br><span class="line"><span class="class">        &lt;<span class="title">div</span> <span class="title">class</span>='<span class="title">item</span>'&gt;1111&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">&lt;/<span class="title">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="二、absolute-margin-auto"><a href="#二、absolute-margin-auto" class="headerlink" title="二、absolute + margin auto"></a>二、absolute + margin auto</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">   .box&#123;</span><br><span class="line">       height: <span class="number">500</span>px;</span><br><span class="line">       background: green;</span><br><span class="line">       position:relative;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   .item&#123;</span><br><span class="line">       width:<span class="number">300</span>px;</span><br><span class="line">       height:<span class="number">300</span>px;</span><br><span class="line">       background: red;</span><br><span class="line">       position: absolute;</span><br><span class="line">       left:<span class="number">0</span>;</span><br><span class="line">       right:<span class="number">0</span>;</span><br><span class="line">       top:<span class="number">0</span>;</span><br><span class="line">       bottom:<span class="number">0</span>;</span><br><span class="line">       margin:auto;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span>='<span class="title">box</span>'&gt;</span></span><br><span class="line"><span class="class">        &lt;<span class="title">div</span> <span class="title">class</span>='<span class="title">item</span>'&gt;1111&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">&lt;/<span class="title">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="三、position-calc"><a href="#三、position-calc" class="headerlink" title="三、position+calc"></a>三、position+calc</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">   .box&#123;</span><br><span class="line">       height: <span class="number">500</span>px;</span><br><span class="line">       background: green;</span><br><span class="line">       position:relative;</span><br><span class="line">   &#125;</span><br><span class="line">   .item&#123;</span><br><span class="line">       width:<span class="number">300</span>px;</span><br><span class="line">       height:<span class="number">300</span>px;</span><br><span class="line">       background: red;</span><br><span class="line">       position: absolute;</span><br><span class="line">       left:calc(<span class="number">50</span>% - <span class="number">150</span>px);</span><br><span class="line">       top:calc(<span class="number">50</span>% - <span class="number">150</span>px);</span><br><span class="line">   &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span>='<span class="title">box</span>'&gt;</span></span><br><span class="line"><span class="class">        &lt;<span class="title">div</span> <span class="title">class</span>='<span class="title">item</span>'&gt;1111&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">&lt;/<span class="title">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="四、position-transform"><a href="#四、position-transform" class="headerlink" title="四、position+transform"></a>四、position+transform</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">   .box&#123;</span><br><span class="line">       height: <span class="number">500</span>px;</span><br><span class="line">       background: green;</span><br><span class="line">       position:relative;</span><br><span class="line">   &#125;</span><br><span class="line">   .item&#123;</span><br><span class="line">       width:<span class="number">300</span>px;</span><br><span class="line">       height:<span class="number">300</span>px;</span><br><span class="line">       background: red;</span><br><span class="line">       position: absolute;</span><br><span class="line">       left:<span class="number">50</span>%;</span><br><span class="line">       top:<span class="number">50</span>%;</span><br><span class="line">       transform:translate(<span class="number">-50</span>%,<span class="number">-50</span>%)</span><br><span class="line">   &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span>='<span class="title">box</span>'&gt;</span></span><br><span class="line"><span class="class">        &lt;<span class="title">div</span> <span class="title">class</span>='<span class="title">item</span>'&gt;1111&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">&lt;/<span class="title">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="五、flex"><a href="#五、flex" class="headerlink" title="五、flex"></a>五、flex</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">   .box&#123;</span><br><span class="line">       height: <span class="number">500</span>px;</span><br><span class="line">       background: green;</span><br><span class="line">       display:flex;</span><br><span class="line">       justify-content:center;</span><br><span class="line">       align-items:center;</span><br><span class="line">   &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span>='<span class="title">box</span>'&gt;</span></span><br><span class="line"><span class="class">        &lt;<span class="title">div</span> <span class="title">class</span>='<span class="title">item</span>'&gt;1111&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">&lt;/<span class="title">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="六、line-height"><a href="#六、line-height" class="headerlink" title="六、line-height"></a>六、line-height</h3><p>把box设置为行内块元素，通过text-align就可以做到水平居中，通过vertical-align在垂直方向做到居中<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;</span><br><span class="line">       line-height: <span class="number">500</span>px;</span><br><span class="line">       background: green;</span><br><span class="line">       text-align:center;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   .item&#123;</span><br><span class="line">       width:<span class="number">300</span>px;</span><br><span class="line">       height:<span class="number">300</span>px;</span><br><span class="line">       background: rgb(<span class="number">248</span>, <span class="number">242</span>, <span class="number">242</span>);</span><br><span class="line">       display: inline-block;</span><br><span class="line">       vertical-align: middle;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span>='<span class="title">box</span>'&gt;</span></span><br><span class="line"><span class="class">        &lt;<span class="title">div</span> <span class="title">class</span>='<span class="title">item</span>'&gt;&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">&lt;/<span class="title">body</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="七、table"><a href="#七、table" class="headerlink" title="七、table"></a>七、table</h3><p>tabel单元格中的内容天然就是垂直居中的，只要添加一个水平居中属性就好了<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    .box&#123;</span><br><span class="line">        width:<span class="number">500</span>px;</span><br><span class="line">        height:<span class="number">500</span>px;</span><br><span class="line">        background: green;</span><br><span class="line">        text-align:center;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   .item&#123;</span><br><span class="line">     width: <span class="number">300</span>px;</span><br><span class="line">     height: <span class="number">300</span>px;</span><br><span class="line">     background-color: brown;</span><br><span class="line">     display:inline-block;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;table&gt;</span><br><span class="line">        &lt;tbody&gt;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">                &lt;td class="box"&gt;</span><br><span class="line">                    &lt;div class="item"&gt;123123&lt;/div&gt;</span><br><span class="line">                &lt;/td&gt;</span><br><span class="line">            &lt;/tr&gt;</span><br><span class="line">        &lt;/tbody&gt;</span><br><span class="line">    &lt;/table&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="八、css-table属性"><a href="#八、css-table属性" class="headerlink" title="八、css-table属性"></a>八、css-table属性</h3><p>css新增的table属性，可以让我们把普通元素，变为table元素的现实效果，通过这个特性也可以实现水平垂直居中<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    .box&#123;</span><br><span class="line">        width:<span class="number">500</span>px;</span><br><span class="line">        height:<span class="number">500</span>px;</span><br><span class="line">        background: green;</span><br><span class="line">        display:table-cell;</span><br><span class="line">        text-align:center;</span><br><span class="line">        vertical-align: middle;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   .item&#123;</span><br><span class="line">     width: <span class="number">300</span>px;</span><br><span class="line">     height: <span class="number">300</span>px;</span><br><span class="line">     background-color: brown;</span><br><span class="line">     display:inline-block;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">   </span><br><span class="line">    &lt;div class="box"&gt;</span><br><span class="line">        &lt;div class="item"&gt;&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">          </span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="九、grid"><a href="#九、grid" class="headerlink" title="九、grid"></a>九、grid</h3><p>css新出的网格布局<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    .box&#123;</span><br><span class="line">        display:grid;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   .item&#123;</span><br><span class="line">     align-<span class="keyword">self</span>: center;</span><br><span class="line">    justify-<span class="keyword">self</span>: center;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">   </span><br><span class="line">    &lt;div class="box"&gt;</span><br><span class="line">        &lt;div class="item"&gt;&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">          </span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="十、writing-mode"><a href="#十、writing-mode" class="headerlink" title="十、writing-mode"></a>十、writing-mode</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">   .box&#123;</span><br><span class="line">       height:<span class="number">500</span>px;</span><br><span class="line">       width: <span class="number">100</span>%;</span><br><span class="line">       background-color: aqua;</span><br><span class="line">       writing-mode:vertical-lr;</span><br><span class="line">       text-align:center;</span><br><span class="line">   &#125;</span><br><span class="line">.box-inner&#123;</span><br><span class="line">    display:inline-block;</span><br><span class="line">    writing-mode:horizontal-tb;</span><br><span class="line">    text-align: center;</span><br><span class="line">    width:<span class="number">100</span>%;</span><br><span class="line">&#125;</span><br><span class="line">.item&#123;</span><br><span class="line">    width: <span class="number">300</span>px;</span><br><span class="line">    height: <span class="number">300</span>px;</span><br><span class="line">    background-color: brown;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    margin: auto;</span><br><span class="line">    text-align: left;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">   &lt;div <span class="class"><span class="keyword">class</span>='<span class="title">box</span>'&gt;</span></span><br><span class="line"><span class="class">       &lt;<span class="title">div</span> <span class="title">class</span>='<span class="title">box</span>-<span class="title">inner</span>'&gt;</span></span><br><span class="line"><span class="class">           &lt;<span class="title">div</span> <span class="title">class</span>='<span class="title">item</span>'&gt;123&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">        &lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">   &lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">&lt;/<span class="title">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
+                    
+                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link" data-ae="false" data-ci="" data-cs="" data-r="" data-o="" data-a="" data-d="false">查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>
