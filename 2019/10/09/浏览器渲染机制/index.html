@@ -11,7 +11,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="Fechin,"> 
-    <meta name="description" content="一、Es6中的setSet 内部判断两个值是否不同，使用的算法叫做“Same-value-zero equality”，它类似于精确相等运算符（===），主要的区别是向 Set 加入值时认为NaN等,"> 
+    
     <meta name="author" content="zxSmile"> 
     <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -69,7 +69,7 @@
 <h3 id="四、浏览器渲染机制"><a href="#四、浏览器渲染机制" class="headerlink" title="四、浏览器渲染机制"></a>四、浏览器渲染机制</h3><p>浏览器渲染的处理就是最后一步，浏览器拿到响应数据，解析响应内容，把解析的结果展示给用户。<br><br><b>浏览器内核</b><br><br>浏览器的内核是指支持浏览器运行的最核心的程序，负责将页面转变为可视化的图像结果,分为两个部分，一是渲染引擎，另一个是JS引擎。</p>
 </li>
 <li>渲染引擎，负责对网页语法的解释（如HTML、JavaScript）并渲染网页。渲染引擎决定了浏览器如何显示网页的内容以及页面的格式信息。</li>
-<li>JavaScript引擎的主要作用是，读取网页中的JavaScript代码，对其处理后运行。<br><b>关键渲染路径</b><br><br>关键渲染路径是指浏览器从最初接受到请求的HTML、CSS、javascript等资源，然后解析、构建树、渲染布局、绘制，最后呈现给客户能看到的界面这整个过程。用户看到页面实际上可以分为两个阶段：页面内容加载完成和页面资源完成，分别对应于DOMContentLoaded和Load。<br><br>整个关键渲染路径包括以下几个步骤：</li>
+<li>JavaScript引擎的主要作用是，读取网页中的JavaScript代码，对其处理后运行。<br><b>关键渲染路径</b><br><br>关键渲染路径是指浏览器从最初接受到请求的HTML、CSS、javascript等资源，然后解析、构建树、渲染布局、绘制，最后呈现给客户能看到的界面这整个过程。用户看到页面实际上可以分为两个阶段：页面内容加载完成和页面资源完成，分别对应于DOMContentLoaded和Load。<br><br>DOMContentLoaded:当 DOMContentLoaded 事件触发时，仅当DOM加载完成，不包括样式表，图片。<br><br>Load:当 onload 事件触发时，页面上所有的DOM，样式表，脚本，图片都已经加载完成了。（渲染完毕了）<br><br>所以，顺序是：DOMContentLoaded -&gt; load<br><br>整个关键渲染路径包括以下几个步骤：<ul>
 <li>解析HTML，生成DOM树（DOM）</li>
 <li>解析CSS，生成CSSOM树（CSSOM）</li>
 <li>将DOM和CSSOM合并，生成渲染树（Render-Tree）</li>
@@ -80,15 +80,26 @@
 <li>生成节点对象并构建DOM<br>事实上，构建DOM的过程中，不是等所有Token都转换完成后再去生成节点对象，而是一边生成Token一边消耗Token来生成节点对象。换句话说，每个Token被生成后，会立刻消耗这个Token创建出节点对象。<b>注意：带有结束标签标识的Token不会创建节点对象。<b><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Web page parsing&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;h1&gt;Web page parsing&lt;/h1&gt;</span><br><span class="line">        &lt;p&gt;This is an example Web page.&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 </b></b></li>
 </ul>
-<p>上面这段HTML会解析成这样：<br><br><img src="/2019/10/09/浏览器渲染机制/img1.png" alt=""><br>解析完HTML，单纯使用DOM，浏览器并不知道如何渲染这棵树，DOM只是存储了元素的关系，并没有任何渲染信息，如宽高、颜色、背景、定位等。存储这些信息，就需要CSSOM了。<br><br><b>2.CSSOM生成</b><br><br>在HTML的解析过程中，会碰到style、link和内联样式，这时，浏览器会开始解析CSSOM。HTML解析构建和CSS的解析是相互独立的并不会造成冲突，因此我们通常将css样式放在head中，让浏览器尽早解析css。<br><br>当浏览器接收到 CSS 的原始字节时，会启动一个和处理 HTML 原始字节类似的过程。就是说，原始数据字节被转换成字符，然后标记，然后形成节点，最后形成树结构。<br><br><b>style和内联样式<b><br><br>对这两类样式，浏览器会直接根据样式声明生成CSSOM，因为它们本身就直接含有样式内容。<br><br><b>link<b><br><br>对外联样式，浏览器会首先发送请求，待请求成功，获取外联样式后，浏览器便会解析该外联样式，并生成相应的CSSOM。<br><br><b>CSS阻塞渲染<b><br><br>由于CSSOM负责存储渲染信息，浏览器就必须保证在合成渲染树之前，CSSOM是完备的，这种完备是指所有的CSS（内联、内部和外部）都已经下载完，并解析完，只有CSSOM和DOM的解析完全结束，浏览器才会进入下一步的渲染，这就是传说中的CSS阻塞渲染。<br><br>CSS阻塞渲染意味着，在CSSOM完备前，页面将一直处理白屏状态，这就是为什么样式放在head中，仅仅是为了更快的解析CSS，保证更快的首次渲染。<br><br>需要注意的是，即便你没有给页面任何的样式声明，CSSOM依然会生成，默认生成的CSSOM自带浏览器默认样式（default styles）。<br><br>样式解析生成的CSSOM便含有渲染信息，这些信息会与DOM一起，生成渲染树Render-Tree。<br><br><b>3.Script标签的处理<b><br><br>渲染过程中，如果遇到 <script>就停止渲染，执行 JS 代码。因为浏览器渲染和 JS 执行共用一个线程，而且这里必须是单线程操作，多线程会产生渲染 DOM 冲突。JavaScript的加载、解析与执行会阻塞DOM的构建，也就是说，在构建DOM时，HTML解析器若遇到了JavaScript，那么它会暂停构建DOM，将控制权移交给JavaScript引擎，等JavaScript引擎运行完毕，浏览器再从中断的地方恢复DOM构建。也就是说，如果你想首屏渲染的越快，就越不应该在首屏就加载 JS 文件，这也是都建议将 script 标签放在 body 标签底部的原因。当然在当下，并不是说 script 标签必须放在底部，因为你可以给 script 标签添加 defer 或者 async 属性。<br/><br><b>JS文件不只是阻塞DOM的构建，它会导致CSSOM也阻塞DOM的构建。<b/><br/><br>原本DOM和CSSOM的构建是互不影响，井水不犯河水，但是一旦引入了JavaScript，CSSOM也开始阻塞DOM的构建，只有CSSOM构建完毕后，DOM再恢复DOM构建。这是因为JavaScript不只是可以改DOM，它还可以更改样式，也就是它可以更改CSSOM。因为不完整的CSSOM是无法使用的，如果JavaScript想访问CSSOM并更改它，那么在执行JavaScript时，必须要能拿到完整的CSSOM。所以就导致了一个现象，如果浏览器尚未完成CSSOM的下载和构建，而我们却想在此时运行脚本，那么浏览器将延迟脚本执行和DOM构建，直至其完成CSSOM的下载和构建。也就是说，在这种情况下，浏览器会先下载和构建CSSOM，然后再执行JavaScript，最后在继续构建DOM。<br/><br><b>4.渲染树<b/><br>当DOM和CSSOM构建完成，它们一个存储了节点信息，一个存储了节点渲染信息，都不能直接用来渲染，为此浏览器会将两者结合，生成渲染树（Render-Tree），这棵树就包含了页面所有可见元素及其渲染信息。<br/><br>生成渲染树，浏览器做了这些工作：</p>
+</li>
+</ul>
+<p>上面这段HTML会解析成这样：<br><br><img src="/2019/10/09/浏览器渲染机制/img1.png" alt=""><br>解析完HTML，单纯使用DOM，浏览器并不知道如何渲染这棵树，DOM只是存储了元素的关系，并没有任何渲染信息，如宽高、颜色、背景、定位等。存储这些信息，就需要CSSOM了。<br><br><b>2.CSSOM生成</b><br><br>在HTML的解析过程中，会碰到style、link和内联样式，这时，浏览器会开始解析CSSOM。HTML解析构建和CSS的解析是相互独立的并不会造成冲突，<b>因此css不会阻塞DOM树的解析。<br><br>当浏览器接收到 CSS 的原始字节时，会启动一个和处理 HTML 原始字节类似的过程。就是说，原始数据字节被转换成字符，然后标记，然后形成节点，最后形成树结构。<br><br><b>style和内联样式</b><br><br>对这两类样式，浏览器会直接根据样式声明生成CSSOM，因为它们本身就直接含有样式内容。<br><br><b>link</b><br><br>对外联样式，浏览器会首先发送请求，待请求成功，获取外联样式后，浏览器便会解析该外联样式，并生成相应的CSSOM。<br><br><b>CSS阻塞DOM树（render树）的渲染</b><br><br>由于CSSOM负责存储渲染信息，浏览器就必须保证在合成渲染树之前，CSSOM是完备的，这种完备是指所有的CSS（内联、内部和外部）都已经下载完，并解析完，只有CSSOM和DOM的解析完全结束，浏览器才会进入下一步的渲染，这就是传说中的CSS阻塞渲染。<br><br>CSS阻塞渲染意味着，在CSSOM完备前，页面将一直处理白屏状态，这就是为什么样式放在head中，仅仅是为了更快的解析CSS，保证更快的首次渲染。<br><br>需要注意的是，即便你没有给页面任何的样式声明，CSSOM依然会生成，默认生成的CSSOM自带浏览器默认样式（default styles）。<br><br>样式解析生成的CSSOM便含有渲染信息，这些信息会与DOM一起，生成渲染树Render-Tree。<br></b></p>
+<p><b>css加载会阻塞后面js语句的执行</b><br><br>这是因为JavaScript不只是可以改DOM，它还可以更改样式，也就是它可以更改CSSOM。因为不完整的CSSOM是无法使用的，如果JavaScript想访问CSSOM并更改它，那么在执行JavaScript时，必须要能拿到完整的CSSOM。所以就导致了一个现象，如果浏览器尚未完成CSSOM的下载和构建，而我们却想在此时运行脚本，那么浏览器将延迟脚本执行。</p>
+<p><font color="red">Css 的加载会阻塞 Dom 的渲染，并不会阻塞 Dom 的解析，也会阻塞 JavaScript 的执行。</font><br></p>
+<p><b>3.Script标签的处理</b><br><br>渲染过程中，如果遇到 <script>就停止渲染，执行 JS 代码。因为浏览器渲染和 JS 执行共用一个线程，而且这里必须是单线程操作，多线程会产生渲染 DOM 冲突。JavaScript的加载、解析与执行会阻塞DOM的构建，也就是说，在构建DOM时，HTML解析器若遇到了JavaScript，那么它会暂停构建DOM，将控制权移交给JavaScript引擎，等JavaScript引擎运行完毕，浏览器再从中断的地方恢复DOM构建。也就是说，如果你想首屏渲染的越快，就越不应该在首屏就加载 JS 文件，这也是都建议将 script 标签放在 body 标签底部的原因。当然在当下，并不是说 script 标签必须放在底部，因为你可以给 script 标签添加 defer 或者 async 属性。<br/><br><b>JS文件不只是阻塞DOM的构建，它会导致CSSOM也阻塞DOM的构建。</b><br/><br>原本DOM和CSSOM的构建是互不影响，井水不犯河水，但是一旦引入了JavaScript，CSSOM也开始阻塞DOM的构建，只有CSSOM构建完毕后，DOM再恢复DOM构建。这是因为JavaScript不只是可以改DOM，它还可以更改样式，也就是它可以更改CSSOM。因为不完整的CSSOM是无法使用的，如果JavaScript想访问CSSOM并更改它，那么在执行JavaScript时，必须要能拿到完整的CSSOM。所以就导致了一个现象，如果浏览器尚未完成CSSOM的下载和构建，而我们却想在此时运行脚本，那么浏览器将延迟脚本执行和DOM构建，直至其完成CSSOM的下载和构建。也就是说，在这种情况下，浏览器会先下载和构建CSSOM，然后再执行JavaScript，最后在继续构建DOM。<br/></p>
+<p><font color='red'>JavaScript 的加载会阻塞 Dom 的解析和渲染，并且也会阻塞 css 的解析和渲染。</font><br/></p>
+<p><font color='red'>img的加载不会阻塞html的解析，但img加载后并不渲染，它需要等待Render Tree生成完后才和Render Tree一起渲染出来。未下载完的图片需等下载完后才渲染。</font><br/><br><b>4.渲染树</b><br/><br>当DOM和CSSOM构建完成，它们一个存储了节点信息，一个存储了节点渲染信息，都不能直接用来渲染，为此浏览器会将两者结合，生成渲染树（Render-Tree），这棵树就包含了页面所有可见元素及其渲染信息。<br/><br>生成渲染树，浏览器做了这些工作：</p>
 <ul>
 <li>从DOM的根节点开始，遍历每个可视节点：script、link、meta都属于不可视节点，另外，display: none的节点也属于不可视节点</li>
 <li>从CSSOM中搜索可视节点的样式</li>
-<li>计算这些样式，将计算值应用到可视节点上<br>渲染树生成后，还是没有办法渲染到屏幕上，渲染到屏幕需要得到各个节点的位置信息，这就需要布局（Layout）的处理了。<br/><br><b>5.布局<b/><br>当浏览器生成渲染树以后，就会根据渲染树来进行布局（也可以叫做回流）。这一阶段浏览器要做的事情是要弄清楚各个节点在页面中的确切位置和大小。通常这一行为也被称为“自动重排”。<br/><br>布局流程的输出是一个“盒模型”，它会精确地捕获每个元素在视口内的确切位置和尺寸，所有相对测量值都将转换为屏幕上的绝对像素。<br/><br>布局使用流模型的Layout算法。所谓流模型，即是指Layout的过程只需进行一遍即可完成，后出现在流中的元素不会影响前出现在流中的元素，Layout过程只需从左至右从上至下一遍完成即可。<br/><br>但实际实现中，流模型会有例外。Layout是一个递归的过程，每个节点都负责自己及其子节点的Layout。Layout结果是相对父节点的坐标和尺寸。其过程可以简述为：<br/></li>
+<li>计算这些样式，将计算值应用到可视节点上<br>渲染树生成后，还是没有办法渲染到屏幕上，渲染到屏幕需要得到各个节点的位置信息，这就需要布局（Layout）的处理了。<br/></li>
+</ul>
+<p><b>5.布局</b><br/><br>当浏览器生成渲染树以后，就会根据渲染树来进行布局（也可以叫做回流）。这一阶段浏览器要做的事情是要弄清楚各个节点在页面中的确切位置和大小。通常这一行为也被称为“自动重排”。<br/><br>布局流程的输出是一个“盒模型”，它会精确地捕获每个元素在视口内的确切位置和尺寸，所有相对测量值都将转换为屏幕上的绝对像素。<br/><br>布局使用流模型的Layout算法。所谓流模型，即是指Layout的过程只需进行一遍即可完成，后出现在流中的元素不会影响前出现在流中的元素，Layout过程只需从左至右从上至下一遍完成即可。<br/><br>但实际实现中，流模型会有例外。Layout是一个递归的过程，每个节点都负责自己及其子节点的Layout。Layout结果是相对父节点的坐标和尺寸。其过程可以简述为：<br/></p>
+<ul>
 <li>父节点确定自己的宽度</li>
 <li>父节点完成子节点放置，确定其相对坐标</li>
 <li>节点确定自己的宽度和高度</li>
-<li>父节点根据所有的子节点高度计算自己的高度<br><b>6.渲染<b/><br>此时renderTree已经构建完毕，不过浏览器渲染树引擎并不直接使用渲染树进行绘制，为了方便处理定位（裁剪），溢出滚动（页内滚动），CSS转换/不透明/动画/滤镜，蒙版或反射，Z （Z排序）等，浏览器需要生成另外一棵树 - 层树。因此绘制过程如下：<br/></li>
+<li>父节点根据所有的子节点高度计算自己的高度</li>
+<li><b>6.渲染</b><br/><br>此时renderTree已经构建完毕，不过浏览器渲染树引擎并不直接使用渲染树进行绘制，为了方便处理定位（裁剪），溢出滚动（页内滚动），CSS转换/不透明/动画/滤镜，蒙版或反射，Z （Z排序）等，浏览器需要生成另外一棵树 - 层树。因此绘制过程如下：<br/></li>
 <li>获取 DOM 并将其分割为多个层(RenderLayer)</li>
 <li>将每个层栅格化，并独立的绘制进位图中</li>
 <li>将这些位图作为纹理上传至 GPU</li>
@@ -133,7 +144,7 @@
 JSON是一种轻量级的数据交换格式，采用完全独立于语言的文本格式，是理想的数据交换格式。同时，JSON是 JavaScript原生格式，这意味着在 JavaScript 中处理 JSON数据不需要任何特殊的 API 或工具包。&lt;br/&gt;
 * 让需要经常改动的节点脱离文档流
 因为重绘有时确实不可避免，所以只能尽可能限制重绘的影响范围。&lt;br/&gt;
-</code></pre></script></b></b></b></b></b></b></b></b></p>
+</code></pre></script></p>
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
                 <source type="audio/mpeg" src="">
