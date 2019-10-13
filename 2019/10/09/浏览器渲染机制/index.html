@@ -116,12 +116,7 @@
 * 浏览器大小改变resize、font-size（重绘+回流）
 * transform/opacity （不会触发生重绘、回流）
 * 最复杂的一种：获取某些属性，引发回流 很多浏览器会对回流做优化，他会等到足够数量的变化发生，在做一次批处理回流。 但是除了 render 树的直接变化。 当获取一些属性时，浏览器为了获得正确的值也会触发回流。
-       1.offsetTop, offsetLeft, offsetWidth, offsetHeight
-       2.scrollTop/Left/Width/Height
-       3.clientTop/Left/Width/Height
-       4.width,height
-       5.调用了 getComputedStyle(), 或者 IE 的 currentStyle
-</code></pre></li>
+</code></pre>&ensb;&ensb;&ensb;&ensb;1.offsetTop, offsetLeft, offsetWidth, offsetHeight<br><br>&ensb;&ensb;&ensb;&ensb;2.scrollTop/Left/Width/Height<br><br>&ensb;&ensb;&ensb;&ensb;3.clientTop/Left/Width/Height<br><br>&ensb;&ensb;&ensb;&ensb;4.width,height<br><br>&ensb;&ensb;&ensb;&ensb;5.调用了 getComputedStyle(), 或者 IE 的 currentStyle<br></li>
 <li>减少重绘和回流<pre><code>* 避免逐项更改样式。最好一次性更改 style 属性，或者将样式列表定义为 class 并一次性更改 class 属性。
 * 避免循环操作 DOM。创建一个 documentFragment 或 div，在它上面应用所有 DOM 操作，最后再把它添加到 window.document。
 * 避免多次读取 offsetLeft 等属性。无法避免则将它们缓存到变量。
@@ -137,7 +132,7 @@
 <li>首屏时间——当浏览器显示第一屏页面所消耗的时间，在国内的网络条件下，通常一个网站，如果“首屏时间”在2秒以内是比较优秀的，5秒以内用户可以接受，10秒以上就不可容忍了。</li>
 <li>白屏时间——指浏览器开始显示内容的时间。但是在传统的采集方式里，是在HTML的头部标签结尾里记录时间戳，来计算白屏时间。在这个时刻，浏览器开始解析身体标签内的内容。而现代浏览器不会等待CSS树（所有CSS文件下载和解析完成）和DOM树（整个身体标签解析完成）构建完成才开始绘制，而是马上开始显示中间结果。所以经常在低网速的环境中，观察到页面由上至下缓慢显示完，或者先显示文本内容后再重绘成带有格式的页面内容。<h4 id="2-优化办法"><a href="#2-优化办法" class="headerlink" title="2.优化办法"></a>2.优化办法</h4>1、减少资源请求的次数和压缩数据内容。 因为资源的请求是一个复杂的过程。网速相同的条件下，下载一个100KB的图片比下载两个50KB的图片要快。所以，请减少HTTP请求。<br><ul>
 <li>进行资源打包，将需要多次请求的资源进行打包减少资源请求次数，如webpack等。</li>
-<li>使用雪碧图，可以避免因不同图片引起的多次资源下载<br>2、高效合理的css选择符可以减轻浏览器的解析负担。<br></li>
+<li>使用雪碧图，可以避免因不同图片引起的多次资源下载<br>2、高效合理的css选择符可以减轻浏览器的解析负担。</li>
 <li>因为css是逆向解析的所以应当避免多层嵌套。</li>
 <li>避免使用通配规则。如 *{} 计算次数惊人！只对需要用到的元素进行选择</li>
 <li>不要去用标签限定ID或者类选择符。如：ul#nav,应该简化为#nav</li>
@@ -148,17 +143,14 @@
 </ul>
 <p>3、从js层面谈页面优化</p>
 <pre><code>* 解决渲染阻塞&lt;br/&gt;
-如果在解析HTML标记时，浏览器遇到了JavaScript，解析会停止。只有在该脚本执行完毕后，HTML渲染才会继续进行。所以这阻塞了页面的渲染。&lt;br/&gt;
-解决方法：在标签中使用 async或defer特性&lt;br/&gt;
-* 减少对DOM的操作
-对DOM操作的代价是高昂的，这在网页应用中的通常是一个性能瓶颈。&lt;br/&gt;
-解决办法：修改和访问DOM元素会造成页面的Repaint和Reflow，循环对DOM操作更是罪恶的行为。所以请合理的使用JavaScript变量储存内容，考虑大量DOM元素中循环的性能开销，在循环结束时一次性写入。&lt;br/&gt;
-减少对DOM元素的查询和修改，查询时可将其赋值给局部变量。&lt;br/&gt;
-* 使用JSON格式来进行数据交换
-JSON是一种轻量级的数据交换格式，采用完全独立于语言的文本格式，是理想的数据交换格式。同时，JSON是 JavaScript原生格式，这意味着在 JavaScript 中处理 JSON数据不需要任何特殊的 API 或工具包。&lt;br/&gt;
-* 让需要经常改动的节点脱离文档流
-因为重绘有时确实不可避免，所以只能尽可能限制重绘的影响范围。&lt;br/&gt;
-</code></pre>
+</code></pre><p>&ensb;&ensb;&ensb;&ensb;如果在解析HTML标记时，浏览器遇到了JavaScript，解析会停止。只有在该脚本执行完毕后，HTML渲染才会继续进行。所以这阻塞了页面的渲染。<br><br>&ensb;&ensb;&ensb;&ensb;解决方法：在标签中使用 async或defer特性<br></p>
+<pre><code>* 减少对DOM的操作
+</code></pre><p>&ensb;&ensb;&ensb;&ensb;对DOM操作的代价是高昂的，这在网页应用中的通常是一个性能瓶颈。<br><br>&ensb;&ensb;&ensb;&ensb;解决办法：修改和访问DOM元素会造成页面的Repaint和Reflow，循环对DOM操作更是罪恶的行为。所以请合理的使用JavaScript变量储存内容，考虑大量DOM元素中循环的性能开销，在循环结束时一次性写入。<br><br>&ensb;&ensb;&ensb;&ensb;减少对DOM元素的查询和修改，查询时可将其赋值给局部变量。<br></p>
+<pre><code>* 使用JSON格式来进行数据交换
+</code></pre><p>&ensb;&ensb;&ensb;&ensb;JSON是一种轻量级的数据交换格式，采用完全独立于语言的文本格式，是理想的数据交换格式。同时，JSON是 JavaScript原生格式，这意味着在 JavaScript 中处理 JSON数据不需要任何特殊的 API 或工具包。<br></p>
+<pre><code>* 让需要经常改动的节点脱离文档流
+</code></pre><p>&ensb;&ensb;&ensb;&ensb;因为重绘有时确实不可避免，所以只能尽可能限制重绘的影响范围。<br></p>
+
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
                 <source type="audio/mpeg" src="">
