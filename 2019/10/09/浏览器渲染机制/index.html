@@ -65,7 +65,7 @@
 </li>
 <li><p>数据存储－属于持久层，浏览器需要在硬盘中保存类似cookie的各种数据，HTML5定义了web database技术，这是一种轻量级完整的客户端存储技术</p>
 <h3 id="二、浏览器主要的功能"><a href="#二、浏览器主要的功能" class="headerlink" title="二、浏览器主要的功能"></a>二、浏览器主要的功能</h3><p>浏览器的主要功能是将用户选择的web资源呈现出来，它需要从服务器请求资源，并将其显示在浏览器窗口中，资源的格式通常是HTML，也包括PDF、image及其他格式。用户用URI来指定所请求资源的位置。</p>
-<h3 id="三、从输入-URL-到页面加载完成，发生了什么？"><a href="#三、从输入-URL-到页面加载完成，发生了什么？" class="headerlink" title="三、从输入 URL 到页面加载完成，发生了什么？"></a>三、从输入 URL 到页面加载完成，发生了什么？</h3><p>DNS 解析  <br><br> |      <br><br>TCP 连接   <br><br> |<br><br>HTTP 请求抛出<br><br> |<br><br>服务端处理请求，HTTP 响应返回<br><br> |<br><br>浏览器拿到响应数据，解析响应内容，把解析的结果展示给用户<br></p>
+<h3 id="三、从输入-URL-到页面加载完成，发生了什么？"><a href="#三、从输入-URL-到页面加载完成，发生了什么？" class="headerlink" title="三、从输入 URL 到页面加载完成，发生了什么？"></a>三、从输入 URL 到页面加载完成，发生了什么？</h3><p>浏览器输入url<br><br> |      <br><br>浏览器主进程接管，开一个下载线程<br><br> |      <br><br>DNS 解析  <br><br> |      <br><br>TCP 连接   <br><br> |<br><br>HTTP 请求抛出<br><br> |<br><br>服务端处理请求，HTTP 响应返回<br><br> |<br><br>浏览器拿到响应数据，解析响应内容，把解析的结果展示给用户<br></p>
 <h3 id="四、浏览器渲染机制"><a href="#四、浏览器渲染机制" class="headerlink" title="四、浏览器渲染机制"></a>四、浏览器渲染机制</h3><p>浏览器渲染的处理就是最后一步，浏览器拿到响应数据，解析响应内容，把解析的结果展示给用户。<br><br><b>浏览器内核</b><br><br>浏览器的内核是指支持浏览器运行的最核心的程序，负责将页面转变为可视化的图像结果,分为两个部分，一是渲染引擎，另一个是JS引擎。</p>
 </li>
 <li>渲染引擎，负责对网页语法的解释（如HTML、JavaScript）并渲染网页。渲染引擎决定了浏览器如何显示网页的内容以及页面的格式信息。</li>
@@ -76,7 +76,7 @@
 <li>计算渲染树的布局（Layout）</li>
 <li>将布局渲染到屏幕上（Paint）<br>以上步骤没有包括脚本JS的处理，并不是脚本处理不在关键渲染路径中，而是因为JS的处理会对1、2产生影响，下面会介绍。<br>1.DOM的生成<br><br>首先我们知道，数据在网络传输中是以“数据包”的形式通过互联网发送，而数据包以字节为单位。<br><br>当你编写一些 HTML、CSS 和 JS，并试图在浏览器中打开 HTML 文件时，浏览器会从你的硬盘（或网络）中读取 HTML 的原始字节。浏览器读取的是原始数据字节，而不是你编写的代码的实际字符。但是，它用这些数据什么都做不了。数据的原始字节必须转换为它所理解的形式。<br><br>浏览器对象需要处理的是文档对象模型（DOM）对象。所以要将构建一个DOM对象：<br></li>
 <li>首先，根据文件的指定编码（例如 UTF-8）将原始数据字节转换为字符,也就是我们写的代码。</li>
-<li>将字符转换成Token，例如： <html>、 <body>等。Token中会标识出当前Token是“开始标签”或是“结束标签”亦或是“文本”等信息。</body></html></li>
+<li>将字符转换成Token，例如： /<html>、 /<body>等。Token中会标识出当前Token是“开始标签”或是“结束标签”亦或是“文本”等信息。</body></html></li>
 <li>生成节点对象并构建DOM<br>事实上，构建DOM的过程中，不是等所有Token都转换完成后再去生成节点对象，而是一边生成Token一边消耗Token来生成节点对象。换句话说，每个Token被生成后，会立刻消耗这个Token创建出节点对象。<b>注意：带有结束标签标识的Token不会创建节点对象。<b><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Web page parsing&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;h1&gt;Web page parsing&lt;/h1&gt;</span><br><span class="line">        &lt;p&gt;This is an example Web page.&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 </b></b></li>
 </ul>
