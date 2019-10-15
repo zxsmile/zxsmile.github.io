@@ -11,12 +11,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="Fechin,"> 
-    <meta name="description" content="一、浏览器的主要组成
-用户界面－包括地址栏、后退/前进按钮、书签目录等，也就是你所看到的除了用来显示你所请求页面的主窗口之外的其他部分
-
-浏览器引擎－用来查询及操作渲染引擎的接口
-
-渲染引擎－用来显,"> 
+    
     <meta name="author" content="zxSmile"> 
     <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -81,7 +76,7 @@
 <li>计算渲染树的布局（Layout）</li>
 <li>将布局渲染到屏幕上（Paint）<br>以上步骤没有包括脚本JS的处理，并不是脚本处理不在关键渲染路径中，而是因为JS的处理会对1、2产生影响，下面会介绍。<br>1.DOM的生成<br><br>首先我们知道，数据在网络传输中是以“数据包”的形式通过互联网发送，而数据包以字节为单位。<br><br>当你编写一些 HTML、CSS 和 JS，并试图在浏览器中打开 HTML 文件时，浏览器会从你的硬盘（或网络）中读取 HTML 的原始字节。浏览器读取的是原始数据字节，而不是你编写的代码的实际字符。但是，它用这些数据什么都做不了。数据的原始字节必须转换为它所理解的形式。<br><br>浏览器对象需要处理的是文档对象模型（DOM）对象。所以要将构建一个DOM对象：<br></li>
 <li>首先，根据文件的指定编码（例如 UTF-8）将原始数据字节转换为字符,也就是我们写的代码。</li>
-<li>将字符转换成Token，例如： \&lt;html>、 \&lt;body>等。Token中会标识出当前Token是“开始标签”或是“结束标签”亦或是“文本”等信息。</li>
+<li>将字符转换成Token，例如： &lt;html>、 &lt;body>等。Token中会标识出当前Token是“开始标签”或是“结束标签”亦或是“文本”等信息。</li>
 <li>生成节点对象并构建DOM<br>事实上，构建DOM的过程中，不是等所有Token都转换完成后再去生成节点对象，而是一边生成Token一边消耗Token来生成节点对象。换句话说，每个Token被生成后，会立刻消耗这个Token创建出节点对象。<b>注意：带有结束标签标识的Token不会创建节点对象。<b><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Web page parsing&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;h1&gt;Web page parsing&lt;/h1&gt;</span><br><span class="line">        &lt;p&gt;This is an example Web page.&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 </b></b></li>
 </ul>

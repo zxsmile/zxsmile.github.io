@@ -26,7 +26,7 @@
     <div class="bar" style="width: 0;"></div>
     <a class="icon-home image-icon" href="javascript:;"></a>
     <div title="播放/暂停" class="icon-play"></div>
-    <h3 class="subtitle">BFC理解</h3>
+    <h3 class="subtitle">负边距在布局中的使用</h3>
     <div class="social">
         <!--<div class="like-icon">-->
             <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -43,30 +43,17 @@
     <div class="section">
         <div class="article">
     <div class="main">
-        <h1 class="title">BFC理解</h1>
+        <h1 class="title">负边距在布局中的使用</h1>
         <div class="stuff">
-            <span>九月 24, 2019</span>
+            <span>十月 15, 2019</span>
             
 
         </div>
         <div class="content markdown">
-            <p>一.先理解一下Box、Formatting Context的概念。<br><br>1.Box:CSS布局的基本单位<br><br>Box 是 CSS 布局的对象和基本单位， 直观点来说，就是一个页面是由很多个 Box 组成的。元素的类型和 display 属性，决定了这个 Box 的类型。 不同类型的 Box， 会参与不同的 Formatting Context（一个决定如何渲染文档的容器），因此Box内的元素会以不同的方式渲染。让我们看看有哪些盒子：</p>
-<ul>
-<li><p>block-level box:display 属性为 block, list-item, table 的元素，会生成 block-level box。并且参与 block fomatting context；</p>
-</li>
-<li><p>inline-level box:display 属性为 inline, inline-block, inline-table 的元素，会生成 inline-level box。并且参与 inline formatting context；</p>
-</li>
-<li><p>run-in box: display 属性为flex,grid</p>
-<ul>
-<li>如果 run-in box 包含 block box，那么这个 run-in box 也成为 block box</li>
-<li>如果紧跟在 run-in box 之后的兄弟节点是 block box，那么这个 run-in box 就会做为此 block box 里的 inline box，run-in box 不能进入已经一个已经以 run-in box 开头的块内，也不能进入本身就是 display:run-in; 的块内</li>
-<li>否则，run-in box 成为 block box<br>2.Formatting context<br><br>Formatting context 是 W3C CSS2.1 规范中的一个概念。它是页面中的一块渲染区域，并且有一套渲染规则，它决定了其子元素将如何定位，以及和其他元素的关系和相互作用。最常见的 Formatting context 有 Block fomatting context (简称BFC)和 Inline formatting context (简称IFC)<br><br>3.每个盒子都有一个FC特性，不同的FC值代表一组盒子不同的排列方式。有的FC值表示盒子从上到下垂直排列，有的FC值表示盒子从左到右水平排列等等。而IFC则是表示盒子从左到右的水平排列方式，仅此而已(注意：一个盒子仅且仅有一个FC值)。而inline-level box的FC特性值固定为IFC<br><br>4.另外仅处于in-flow的盒子才具有FC特性，也就是positioning scheme必须为Normal flow(普通流元素)的盒子才具有FC特性。<br></li>
-</ul>
-</li>
-<li>如果一个元素是浮动的(float:left/right)，绝对定位的(position:absolute/fixed)或者是根元素(html)，那么它被称之为流外的元素(out-of-flow)。如果一个元素不是流外的元素，那么它被称之为流内的素(in-flow)。<br></li>
-</ul>
-<p>二.BFC<br><br><a href="https://blog.csdn.net/xiasohuai/article/details/83721442" target="_blank" rel="noopener">https://blog.csdn.net/xiasohuai/article/details/83721442</a><br></p>
-<p>三.IFC,GFC,FFC<br><br><a href="https://zhanghao-web.github.io/2018/07/23/CSS3/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3BFC-IFC-GFC%E5%92%8CFFC/" target="_blank" rel="noopener">https://zhanghao-web.github.io/2018/07/23/CSS3/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3BFC-IFC-GFC%E5%92%8CFFC/</a><br></p>
+            <p>###一、负边距在普通文档流里面的作用和效果<br>那些没有脱离文档流的元素（指不是浮动元素也不是绝对定位、固定定位的元素等），其在页面中的位置是跟随者文档流的变化而变化的，负边距对这些由文档流控制的元素的作用是，会使它们在文档流中的位置发生偏移。<br><br>文档流只能向左或向上移动，不能向右或向下移动<br><br>当标准流中的元素的margin-top/margin-left使用负值时，会把元素上移、左移，同时文档流中的位置也发生相应变化。这点与position:relative的元素设置top、left后元素还占据原来位置不同。<br><br>当标准流中的元素的margin-bottom/margin-right使用负值时,元素本身没有位置变化，后面的元素会上移、左移。<br></p>
+<p>###二、左和右的负边距对元素宽度的影响<br>负边距不仅能影响元素在文档流中的位置，还能增加元素的宽度！<br><br>这个作用能实现的前提是：该元素没有设定width属性（当然width:auto是可以的）。<br><br>假如一个div没有宽度，他被包裹在一个宽度为300px的父元素中，现在给这个div设置一个margin-left:-100px，这个div就会增长100px，设置margin-right也是如此。<br></p>
+<p>###三、负边距对浮动的影响<br>负边距对浮动元素的影响与负边距对文档流中元素的影响其实是差不多的。文档流中元素的位置由文档流的走向决定，浮动的元素也可以看成有一个“浮动流”存在，不过浮动流既可以向左，也可以向右。<br><br><img src="/2019/10/15/负边距在布局中的使用/margin1.png" alt=""><br>若上面三个元素都是向左浮动。<br><br>给元素二设置margin-left:-50px,则元素二会向左移50px遮盖住元素一。<br><br>给元素二设置margin-right：-50px,则元素三会向右移50px遮盖住元素二。<br><br>若上面三个元素都是向右浮动。<br><br>给元素二设置margin-left:-50px,则元素三会向右移50px遮盖住元素二。<br><br>给元素二设置margin-right：-50px,则元素二会向右移50px遮盖住元素一。<br></p>
+<p>所以负边距对浮动的影响应该是，先看浮动的方向，若是向左，则以左为正方向，元素margin-left使用负值时，会把元素左移。元素margin-right使用负值时，元素本身没有位置变化，后面的元素会左移。<br><br>若是浮动方向是向右，则以右为正方向，元素margin-right使用负值时，会把元素右移。元素margin-left使用负值时，元素本身没有位置变化，后面的元素会右移。<br></p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
