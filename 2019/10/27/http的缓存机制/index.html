@@ -78,23 +78,17 @@
 <li>第一次请求数据的时候，服务器会将缓存标识与数据一起返回给客户端，客户端将二者备份至缓存数据库中。再次请求数据时，客户端将备份的缓存标识发送给服务器，服务器根据缓存标识进行判断，判断成功后，返回304状态码，通知客户端比较成功，可以使用缓存数据</li>
 <li><p>对比缓存判断是否命中通过两对属性：</p>
 <ul>
-<li><p>(1)Last-Modified  /  If-Modified-Since</p>
-<pre><code>* Last-Modified 由服务器产生，指数据的最后修改时间，服务器将 Last-Modified 返回给客户端，下一次浏览器再次请求会携带这个最后修改时间，放在  If-Modified-Since 里，服务器拿到  If-Modified-Since 后，对比数据的最后修改时间：
-
-       * 比对成功，代表数据未修改过，返回状态码 304， 重定向到缓存数据库。
-
-       * 对比失败，代表数据距离上一次被请求时， 做过修改，就要重新响应数据， 返回 200。
-</code></pre></li>
-<li><p>(2)Etag  /  If-None-Match</p>
-<pre><code>* Etag  是由服务器产生的一个唯一标识，服务器将 Etag  返回给客户端，下一次浏览器再次请求会携带这个标识，放在   If-None-Match 里，服务器拿到  If-None-Match 后，对比自己的数据标识：
-
-        * 比对成功，代表数据未修改过，返回状态码 304， 重定向到缓存数据库。
-
-        * 对比失败，代表数据距离上一次被请求时， 做过修改，就要重新响应数据， 返回 200。
-</code></pre></li>
+<li>(1)Last-Modified  /  If-Modified-Since</li>
 </ul>
 </li>
 </ul>
+<p>&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;Last-Modified 由服务器产生，指数据的最后修改时间，服务器将 Last-Modified 返回给客户端，下一次浏览器再次请求会携带这个最后修改时间，放在  If-Modified-Since 里，服务器拿到  If-Modified-Since 后，对比数据的最后修改时间：<br></p>
+<p>&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;比对成功，代表数据未修改过，返回状态码 304， 重定向到缓存数据库。<br></p>
+<p>&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;对比失败，代表数据距离上一次被请求时， 做过修改，就要重新响应数据， 返回 200。<br></p>
+<pre><code>* (2)Etag  /  If-None-Match
+</code></pre><p>&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;Etag  是由服务器产生的一个唯一标识，服务器将 Etag  返回给客户端，下一次浏览器再次请求会携带这个标识，放在   If-None-Match 里，服务器拿到  If-None-Match 后，对比自己的数据标识：<br></p>
+<p>&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;比对成功，代表数据未修改过，返回状态码 304， 重定向到缓存数据库。<br></p>
+<p>&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;&ensb;对比失败，代表数据距离上一次被请求时， 做过修改，就要重新响应数据， 返回 200。<br></p>
 <p><b>Etag  /  If-None-Match 优先级高于 Last-Modified  /  If-Modified-Since</b></p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
