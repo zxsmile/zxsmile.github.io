@@ -51,67 +51,15 @@
         </div>
         <div class="content markdown">
             <p>1.flex布局</p>
-<pre><code>&lt;style&gt;
-    body{
-        margin:0;
-        padding: 0;
-    }
-    .box{
-        display: flex;
-     }
-     .left{
-         background-color: green;
-         width:100px;
-     }
-     .middle{
-         background-color: aqua;
-         flex:1
-     }
-     .right{
-        background-color: red;
-        width:100px
-    }
-&lt;/style&gt;
-
- &lt;body&gt;
-
-       &lt;div class=&apos;box&apos;&gt;
-            &lt;div class=&apos;left&apos;&gt;left&lt;/div&gt;
-            &lt;div class=&apos;middle&apos;&gt;center&lt;/div&gt;
-            &lt;div class=&apos;right&apos;&gt;right&lt;/div&gt;
-        &lt;/div&gt;
- &lt;/body&gt;
-</code></pre><p>2.table-cell布局</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">       body&#123;</span><br><span class="line">           margin:<span class="number">0</span>;</span><br><span class="line">           padding: <span class="number">0</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       .box&#123;</span><br><span class="line">           display: flex;</span><br><span class="line">        &#125;</span><br><span class="line">        .left&#123;</span><br><span class="line">            background-color: green;</span><br><span class="line">            width:<span class="number">100</span>px;</span><br><span class="line">        &#125;</span><br><span class="line">        .middle&#123;</span><br><span class="line">            background-color: aqua;</span><br><span class="line">            flex:<span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">        .right&#123;</span><br><span class="line">           background-color: red;</span><br><span class="line">           width:<span class="number">100</span>px</span><br><span class="line">       &#125;</span><br><span class="line">   &lt;/style&gt;</span><br><span class="line"></span><br><span class="line">    &lt;body&gt;</span><br><span class="line"></span><br><span class="line">          &lt;div <span class="class"><span class="keyword">class</span>='<span class="title">box</span>'&gt;</span></span><br><span class="line"><span class="class">               &lt;<span class="title">div</span> <span class="title">class</span>='<span class="title">left</span>'&gt;<span class="title">left</span>&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">               &lt;<span class="title">div</span> <span class="title">class</span>='<span class="title">middle</span>'&gt;<span class="title">center</span>&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">               &lt;<span class="title">div</span> <span class="title">class</span>='<span class="title">right</span>'&gt;<span class="title">right</span>&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">           &lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;/<span class="title">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>2.table-cell布局</p>
 <ul>
 <li><p>table本来就具有等高的特性</p>
 </li>
-<li><p>display设置为table-cell，则此元素就会作为一个表格单元格显示，类似于使用标签<td>或<th></th></td></p>
-   <style>
-      body{
-          margin:0;
-          padding: 0;
-      }
-       .left{
-           background-color: green;
-           width:100px;
-           display:table-cell
-       }
-       .middle{
-           background-color: aqua;
-           width:100px;
-           display:table-cell
-       }
-       .right{
-          background-color: red;
-          width:100px
-          display:table-cell
-      }
-  </style>
-
-   <body><br><br>         <div class="box"><br>              <div class="left">left</div><br>              <div class="middle">center</div><br>              <div class="right">right</div><br>          </div><br>   </body>
-
+<li><p>display设置为table-cell，则此元素就会作为一个表格单元格显示，类似于使用标签td或th标签</p>
 </li>
 </ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"> &lt;style&gt;</span><br><span class="line">    body&#123;</span><br><span class="line">        margin:<span class="number">0</span>;</span><br><span class="line">        padding: <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">     .left&#123;</span><br><span class="line">         background-color: green;</span><br><span class="line">         width:<span class="number">100</span>px;</span><br><span class="line">         display:table-cell</span><br><span class="line">     &#125;</span><br><span class="line">     .middle&#123;</span><br><span class="line">         background-color: aqua;</span><br><span class="line">         width:<span class="number">100</span>px;</span><br><span class="line">         display:table-cell</span><br><span class="line">     &#125;</span><br><span class="line">     .right&#123;</span><br><span class="line">        background-color: red;</span><br><span class="line">        width:<span class="number">100</span>px</span><br><span class="line">        display:table-cell</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line"> &lt;body&gt;</span><br><span class="line"></span><br><span class="line">       &lt;div <span class="class"><span class="keyword">class</span>='<span class="title">box</span>'&gt;</span></span><br><span class="line"><span class="class">            &lt;<span class="title">div</span> <span class="title">class</span>='<span class="title">left</span>'&gt;<span class="title">left</span>&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">            &lt;<span class="title">div</span> <span class="title">class</span>='<span class="title">middle</span>'&gt;<span class="title">center</span>&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">            &lt;<span class="title">div</span> <span class="title">class</span>='<span class="title">right</span>'&gt;<span class="title">right</span>&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">        &lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class"> &lt;/<span class="title">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>3.假等高列布局 内外边距底部正负值</p>
 <p>实现：设置父容器的overflow属性为hidden。给每列设置比较大的底内边距，然后用数值相似的负外边距消除这个高度。</p>
 <p>技术点:</p>
@@ -120,48 +68,7 @@
 * float:left。使用float，元素会脱离文档流，使其浮动至最近的文档流元素。在这里的作用是，将三个div元素并排。
 
 * overflow:hidden; 设置overflow属性为hidden，这样会让父容器产生BFC（Block Fromatting Context块级格式化上下文）效果，消除float带来的影响。同时，根据需要，会截取内容以适应填充框，将超出容器的部分隐藏
-
-
-&lt;style&gt;
-    body{
-        margin:0;
-        padding: 0;
-    }
-    .box{
-        overflow: hidden;
-     }
-     .left{
-         background-color: green;
-         width:200px;
-         float:left;
-         padding-bottom: 9999px;
-         margin-bottom: -9999px;
-     }
-     .middle{
-         background-color: aqua;
-         float:left;
-         padding-bottom: 9999px;
-         margin-bottom: -9999px;
-     }
-     .right{
-        background-color: red;
-        width:200px;
-        float:left;
-        padding-bottom: 9999px;
-        margin-bottom: -9999px;
-    }
-&lt;/style&gt;
-
-
- &lt;body&gt;
-
-       &lt;div class=&apos;box&apos;&gt;
-            &lt;div class=&apos;left&apos;&gt;left&lt;/div&gt;
-            &lt;div class=&apos;middle&apos;&gt;center&lt;/div&gt;
-            &lt;div class=&apos;right&apos;&gt;right&lt;/div&gt;
-        &lt;/div&gt;
- &lt;/body&gt;
-</code></pre>
+</code></pre><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    body&#123;</span><br><span class="line">        margin:<span class="number">0</span>;</span><br><span class="line">        padding: <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    .box&#123;</span><br><span class="line">        overflow: hidden;</span><br><span class="line">     &#125;</span><br><span class="line">     .left&#123;</span><br><span class="line">         background-color: green;</span><br><span class="line">         width:<span class="number">200</span>px;</span><br><span class="line">         float:left;</span><br><span class="line">         padding-bottom: <span class="number">9999</span>px;</span><br><span class="line">         margin-bottom: <span class="number">-9999</span>px;</span><br><span class="line">     &#125;</span><br><span class="line">     .middle&#123;</span><br><span class="line">         background-color: aqua;</span><br><span class="line">         float:left;</span><br><span class="line">         padding-bottom: <span class="number">9999</span>px;</span><br><span class="line">         margin-bottom: <span class="number">-9999</span>px;</span><br><span class="line">     &#125;</span><br><span class="line">     .right&#123;</span><br><span class="line">        background-color: red;</span><br><span class="line">        width:<span class="number">200</span>px;</span><br><span class="line">        float:left;</span><br><span class="line">        padding-bottom: <span class="number">9999</span>px;</span><br><span class="line">        margin-bottom: <span class="number">-9999</span>px;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> &lt;body&gt;</span><br><span class="line"></span><br><span class="line">       &lt;div <span class="class"><span class="keyword">class</span>='<span class="title">box</span>'&gt;</span></span><br><span class="line"><span class="class">            &lt;<span class="title">div</span> <span class="title">class</span>='<span class="title">left</span>'&gt;<span class="title">left</span>&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">            &lt;<span class="title">div</span> <span class="title">class</span>='<span class="title">middle</span>'&gt;<span class="title">center</span>&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">            &lt;<span class="title">div</span> <span class="title">class</span>='<span class="title">right</span>'&gt;<span class="title">right</span>&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">        &lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class"> &lt;/<span class="title">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
                 <source type="audio/mpeg" src="">
