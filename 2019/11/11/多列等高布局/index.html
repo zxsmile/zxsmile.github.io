@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<html lang="" class="loading">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hexo</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Fechin,"> 
+    
+    <meta name="author" content="zxSmile"> 
+    <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+</head>
+</html>
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">多列等高布局</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div class="main">
+        <h1 class="title">多列等高布局</h1>
+        <div class="stuff">
+            <span>十一月 11, 2019</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <p>1.flex布局</p>
+<pre><code>&lt;style&gt;
+    body{
+        margin:0;
+        padding: 0;
+    }
+    .box{
+        display: flex;
+     }
+     .left{
+         background-color: green;
+         width:100px;
+     }
+     .middle{
+         background-color: aqua;
+         flex:1
+     }
+     .right{
+        background-color: red;
+        width:100px
+    }
+&lt;/style&gt;
+
+ &lt;body&gt;
+
+       &lt;div class=&apos;box&apos;&gt;
+            &lt;div class=&apos;left&apos;&gt;left&lt;/div&gt;
+            &lt;div class=&apos;middle&apos;&gt;center&lt;/div&gt;
+            &lt;div class=&apos;right&apos;&gt;right&lt;/div&gt;
+        &lt;/div&gt;
+ &lt;/body&gt;
+</code></pre><p>2.table-cell布局</p>
+<ul>
+<li><p>table本来就具有等高的特性</p>
+</li>
+<li><p>display设置为table-cell，则此元素就会作为一个表格单元格显示，类似于使用标签<td>或<th></th></td></p>
+   <style>
+      body{
+          margin:0;
+          padding: 0;
+      }
+       .left{
+           background-color: green;
+           width:100px;
+           display:table-cell
+       }
+       .middle{
+           background-color: aqua;
+           width:100px;
+           display:table-cell
+       }
+       .right{
+          background-color: red;
+          width:100px
+          display:table-cell
+      }
+  </style>
+
+   <body><br><br>         <div class="box"><br>              <div class="left">left</div><br>              <div class="middle">center</div><br>              <div class="right">right</div><br>          </div><br>   </body>
+
+</li>
+</ul>
+<p>3.假等高列布局 内外边距底部正负值</p>
+<p>实现：设置父容器的overflow属性为hidden。给每列设置比较大的底内边距，然后用数值相似的负外边距消除这个高度。</p>
+<p>技术点:</p>
+<pre><code>* background 会填充内边距 padding，而不会填充外边距 margin 。margin具有坍塌性，可以设置负值。
+
+* float:left。使用float，元素会脱离文档流，使其浮动至最近的文档流元素。在这里的作用是，将三个div元素并排。
+
+* overflow:hidden; 设置overflow属性为hidden，这样会让父容器产生BFC（Block Fromatting Context块级格式化上下文）效果，消除float带来的影响。同时，根据需要，会截取内容以适应填充框，将超出容器的部分隐藏
+
+
+&lt;style&gt;
+    body{
+        margin:0;
+        padding: 0;
+    }
+    .box{
+        overflow: hidden;
+     }
+     .left{
+         background-color: green;
+         width:200px;
+         float:left;
+         padding-bottom: 9999px;
+         margin-bottom: -9999px;
+     }
+     .middle{
+         background-color: aqua;
+         float:left;
+         padding-bottom: 9999px;
+         margin-bottom: -9999px;
+     }
+     .right{
+        background-color: red;
+        width:200px;
+        float:left;
+        padding-bottom: 9999px;
+        margin-bottom: -9999px;
+    }
+&lt;/style&gt;
+
+
+ &lt;body&gt;
+
+       &lt;div class=&apos;box&apos;&gt;
+            &lt;div class=&apos;left&apos;&gt;left&lt;/div&gt;
+            &lt;div class=&apos;middle&apos;&gt;center&lt;/div&gt;
+            &lt;div class=&apos;right&apos;&gt;right&lt;/div&gt;
+        &lt;/div&gt;
+ &lt;/body&gt;
+</code></pre>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
+                    
+                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link" data-ae="false" data-ci="" data-cs="" data-r="" data-o="" data-a="" data-d="false">查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>
