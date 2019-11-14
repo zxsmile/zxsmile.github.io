@@ -106,8 +106,10 @@
 <p><b>5.渲染(绘制 painting)</b><br><br>此时renderTree已经构建完毕，不过浏览器渲染树引擎并不直接使用渲染树进行绘制，为了方便处理定位（裁剪），溢出滚动（页内滚动），CSS转换/不透明/动画/滤镜，蒙版或反射，Z （Z排序）等，浏览器需要生成另外一棵树 - 层树。因此绘制过程如下：<br></p>
 <ul>
 <li>获取 DOM 并将其分割为多个层(RenderLayer)</li>
-<li>将每个层栅格化，并独立的绘制进位图中</li>
-<li>将这些位图作为纹理上传至 GPU，在GPU中进行合成。<br><b>6.合成(Composite)</b><br><br>对页面中 DOM 元素的绘制是在多个层上进行的。在每个层上完成绘制过程之后，浏览器会将所有层按照合理的顺序合并成一个图层，然后显示在屏幕上。<br><br><a href="https://segmentfault.com/a/1190000008015671" target="_blank" rel="noopener">https://segmentfault.com/a/1190000008015671</a><h3 id="五、浏览器显示优化"><a href="#五、浏览器显示优化" class="headerlink" title="五、浏览器显示优化"></a>五、浏览器显示优化</h3><h4 id="1-相关定义"><a href="#1-相关定义" class="headerlink" title="1.相关定义"></a>1.相关定义</h4></li>
+<li>对每个层进行绘制，绘制是填充像素的过程，一般包括绘制文本，颜色，图像，边框，阴影，基本上包括元素的每个可视部分</li>
+</ul>
+<p><b>6.合成(Composite)</b><br><br>对页面中 DOM 元素的绘制是在多个层上进行的。在每个层上完成绘制过程之后，浏览器会将所有渲染层按照合理的顺序合并成图层，将每个图层栅格化，并独立的绘制进位图中，将这些位图作为纹理上传至 GPU，在GPU中合成位图，然后显示在屏幕上<br><br><a href="https://segmentfault.com/a/1190000008015671" target="_blank" rel="noopener">https://segmentfault.com/a/1190000008015671</a></p>
+<h3 id="五、浏览器显示优化"><a href="#五、浏览器显示优化" class="headerlink" title="五、浏览器显示优化"></a>五、浏览器显示优化</h3><h4 id="1-相关定义"><a href="#1-相关定义" class="headerlink" title="1.相关定义"></a>1.相关定义</h4><ul>
 <li>重绘（Repaint）：repaint 就是在<font color="red">不影响排版的情况下对这个元素重新绘制的过程。例如改变一个元素的背景颜色、字体颜色等。</font></li>
 <li>回流（Reflow）：当 render tree 中的一部分（或全部）因为元素的规模尺寸，布局，隐藏等改变而需要重新构建。这就称为回流（其实我觉得叫重新布局更简单明了些）。每个页面至少需要一次回流，就是在页面第一次加载的时候。（也叫重排）<br><br><font color="red">回流必将引起重绘，而重绘不一定会引起回流</font><br></li>
 <li><p>触发 repaint、reflow<br></p>
@@ -161,8 +163,9 @@
 <li><p>减少对DOM的操作<br>&ensp;&ensp;&ensp;&ensp;对DOM操作的代价是高昂的，这在网页应用中的通常是一个性能瓶颈。<br><br>&ensp;&ensp;&ensp;&ensp;解决办法：修改和访问DOM元素会造成页面的Repaint和Reflow，循环对DOM操作更是罪恶的行为。所以请合理的使用JavaScript变量储存内容，考虑大量DOM元素中循环的性能开销，在循环结束时一次性写入。<br><br>&ensp;&ensp;&ensp;&ensp;减少对DOM元素的查询和修改，查询时可将其赋值给局部变量。<br></p>
 </li>
 <li><p>使用JSON格式来进行数据交换<br>&ensp;&ensp;&ensp;&ensp;JSON是一种轻量级的数据交换格式，采用完全独立于语言的文本格式，是理想的数据交换格式。同时，JSON是 JavaScript原生格式，这意味着在 JavaScript 中处理 JSON数据不需要任何特殊的 API 或工具包。<br></p>
-</li>
-<li><p>让需要经常改动的节点脱离文档流<br>&ensp;&ensp;&ensp;&ensp;因为重绘有时确实不可避免，所以只能尽可能限制重绘的影响范围。<br></p>
+<ul>
+<li>让需要经常改动的节点脱离文档流<br>&ensp;&ensp;&ensp;&ensp;因为重绘有时确实不可避免，所以只能尽可能限制重绘的影响范围。<br></li>
+</ul>
 </li>
 </ul>
 
